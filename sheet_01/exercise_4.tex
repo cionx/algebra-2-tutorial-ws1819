@@ -1,1 +1,549 @@
-\addtocounter{section}{1}
+\section{}
+
+Before we begin with the exercise itself, we recall some group theory:
+
+Let~$G$ be a group and let~$H \subseteq G$ be a subgroup.
+Then~$G$ acts on the set of left cosets~$X \defined G/H = \{ gH \suchthat g \in G\}$ via
+\[
+    g \cdot (g' H)
+  = (g g') H
+\]
+for all~$g \in G$ and~$g'H \in X$.
+This action of~$G$ on~$X$ is transitive and the stabilizer of~$H = 1H \in X$ is given by~$\Stab_G(H) = H$.
+Moreover, the map
+\[
+          G
+  \to     X \,,
+  \quad   g
+  \mapsto gx
+\]
+is~\dash{$G$}{equivariant} for every~$x \in X$.
+The Orbit-Stabilizer theorem asserts that every transitive~\dash{$G$}{set} looks like this:
+
+\begin{theorem}[Orbit-Stabilizer theorem]
+  Let~$G$ be a group and let~$X$ be a~\dash{$G$}{set}.
+  Then for every~$x \in X$ the map
+  \[
+            G/G_x
+    \to     G.x \,,
+    \quad   gG_x
+    \mapsto g.x
+  \]
+  is both bijective and~\dash{$G$}{equivariant}, i.e.\ it is an isomorphism of~\dash{$G$}{sets}.
+\end{theorem}
+
+The Orbit-Stabilizer theorem asserts that if we want for some group~$G$, subgroup~$H \subseteq G$ and set~$X$ construct a bijection~$G/H \to X$, then we need to construct a transitive action of~$G$ on~$X$ such that~$H$ is the stabilizer of some point~$x \in X$.
+
+\begin{example}[Topology]
+  The group~$\SO(n+1)$ acts on the sphere~$\sphere^n$ by rotation.
+  This action is transitive, and the stabilizer of~$e_1 \in \sphere^n$ is given by~$\SO(n)$, when regarded as a subgroup of~$\SO(n+1)$.
+  It hence follows from the Orbit-Stabilizer theorem that
+  \[
+          \SO(n+1)/\SO(n)
+    \cong \sphere^n
+  \]
+  as~\dash{$\SO(n+1)$}{sets}.
+  (It follows from~$\SO(n+1)$ being compact and~$\sphere^n$ being Hausdorff that this is already a homeomorphism.)
+\end{example}
+
+
+
+
+
+\subsection{}
+
+We consider the action of~$G = \GL_n(k)$ on the set~$X$ of flags in~$k^n$ via
+\[
+    g . (F_i)_{i=0}^n
+  = ( gF_i )_{i=0}^n
+\]
+where for every subspace~$U \subseteq k^n$ and every~$g \in G$ the subspace~$gU \subseteq k^n$ is given by
+\[
+    gU
+  = \{ g u \suchthat u \in U \} \,.
+\]
+This does indeed define an action of~$G$ on~$X$ because
+\[
+    \Id.(F_i)_{i=0}^n
+  = (\Id F_i)_{i=0}^n
+  = (F_i)_{i=0}^n
+\]
+for every~$(F_i)_{i=0}^n \in X$, and
+\[
+    g.(h.(F_i)_{i=0}^n)
+  = g.(h F_i)_{i=0}^n
+  = (g h F_i)_{i=0}^n
+  = (gh).(F_i)_{i=0}^n
+\]
+for all~$g, h \in G$ and all~$(F_i)_{i=0}^n \in X$.
+
+We now consider the standard flag~$S \in X$ given by
+\[
+            S_i
+  \defined  \gen{e_1, \dotsc, e_i}_k
+\]
+for all~$i = 0, \dotsc, n$.
+We have for every matrix~$g \in G$ that
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+      {}& g \in \Stab_G(S) \\
+  \iff{}& g.S = S \\
+  \iff{}& \text{$g.\gen{e_1, \dotsc, e_i}_k = \gen{e_1, \dotsc, e_i}_k$ for every~$i = 0, \dotsc, n$} \\
+  \iff{}& \text{$g.\gen{e_1, \dotsc, e_i}_k \subseteq \gen{e_1, \dotsc, e_i}_k$ for every~$i = 0, \dotsc, n$} \\
+  \iff{}& \text{$g.e_j \in \gen{e_1, \dotsc, e_i}_k$ for all~$1 \leq j \leq i \leq n$} \\
+  \iff{}& \text{the~\dash{$j$}{th} column of~$g$ is contained in~$\gen{e_1, \dotsc, e_i}_k$ for all~$1 \leq j \leq i \leq n$}  \\
+  \iff{}& \text{$g$ is of the form
+            $
+            \begin{bmatrix}
+              * & \cdots  & *       \\
+                & \ddots  & \vdots  \\
+                &         & *
+             \end{bmatrix}
+            $
+          } \\
+  \iff{}& \text{$g$ is upper triangular} \,,
+\end{align*}
+\endgroup
+which shows that
+\[
+    \Stab_G(S)
+  = B \,.
+\]
+
+We have that~$G.S = X$:
+There exists for every flag~$(F_i)_{i=0}^n \in X$ a basis~$b_1, \dotsc, b_n$ of~$k^n$ such that~$b_1, \dotsc, b_i$ is for every~$i = 0, \dotsc, n$ a basis of~$F_i$.
+The matrix~$g = (b_1, \dotsc, b_n)$ (i.e.\ the matrix whose columns are the basis vectors~$b_1, \dotsc, b_n$) is then invertible with
+\[
+    g.S_i
+  = g.\gen{e_1, \dotsc, e_i}_k
+  = \gen{g.e_1, \dotsc, g.e_i}_k
+  = \gen{b_1, \dotsc, b_i}_k
+  = F_i
+\]
+for every~$i = 0, \dotsc, n$, and hence~$g.S = X$.
+
+It now follows from the Orbit-Stabilizer theorem that we have a bijection
+\[
+          \varphi
+  \colon  G/B
+  \to     X \,,
+  \quad   gB
+  \mapsto g.S
+\]
+which is also~\dash{$G$}{equivariant}.
+The bijection~$\varphi$ assigns to each matrix~$g \in G$ with columns~$g_1, \dotsc, g_n$ the flag~$g.S = (F_i)_{i=0}^n$ with~$F_i = \gen{g_1, \dotsc, g_i}_k$ for every~$i = 0, \dotsc, n$.
+
+
+
+
+
+\subsection{}
+
+The bijection~$\varphi$ is a~\dash{$G$}{equivariant}, and therefore also~$B$ equivariant, and thus induces a bijection
+\[
+          \{\text{$B$ orbits in~$G/B$}\}
+  \longto \{\text{$B$ orbits in~$X$}\} \,.
+\]
+In the case~$n = 2$ every flag~$(F_i)_{i=0}^2 \in X$ is uniquely determined by its middle term~$F_1$ (because~$F_0 = 0$ and~$F_2 = k^2$), which is an arbitrary \dash{one}{dimensional} subspace of~$k^2$.
+We thus have a bijection
+\[
+            \psi
+  \colon    X
+  \to       \{ \text{\dash{one}{dimensional} subspaces of~$k^2$} \}
+  \defines  X'  \,,
+  \quad     (F_i)_{i=0}^2
+  \mapsto   F_1 \,,
+\]
+and this bijection is~\dash{$G$}{equivariant}, and hence also~\dash{$B$}{equivariant}.
+We therefore get another induced bijection
+\[
+          \{\text{$B$ orbits in~$X$}\}
+  \longto \{\text{$B$ orbits in~$X'$}\} \,.
+\]
+Suppose now that~$L \in X'$ is a \dash{one}{dimensional} subspace of~$k^2$.
+Then~$L$ is spanned by a single nonzero vector
+\[
+      \vect{x \\ y}
+  \in L \,.
+\]
+For~$h \in B$ with~$h = \begin{bsmallmatrix} a & b \\ {} & c \end{bsmallmatrix}$ the space~$h.L$ is spanned by the single vector
+\begin{equation}
+  \label{action of triangle on vector}
+  \begin{bmatrix}
+    a   & b \\
+    {}  & c
+  \end{bmatrix}
+  \vect{x \\ y}
+  =
+  \vect{ax + by \\ cy} \,.
+\end{equation}
+We can now distinguish between two cases:
+\begin{itemize}
+  \item
+    If~$y \neq 0$ then we can choose ~$c = 1/y$,~$a = 1$ and~$b = -x/y$ to find that the~\dash{$B$}{orbit} of~$L$ contains the line~$\gen{e_1}$.
+  \item
+    If~$y = 0$ then~$x \neq 0$ and we can choose~$c = 1$,~$a = 1/x$ and~$b = 0$ to find that the~\dash{$B$}{orbit} of~$L$ contains the line~$\gen{e_2}$.
+\end{itemize}
+If follows from~\eqref{action of triangle on vector} that the~\dash{$B$}{orbit} of~$\gen{e_2}$ does not contain any line~$L'$ with~$e_1 \in L'$ (because it follows from~$c, y \neq 0$ that~$cy \neq 0$).
+Hence the lines~$\gen{e_1}$ and~$\gen{e_2}$ are not in the same~\dash{$B$}{orbit}.
+
+This shows altogether that~$\gen{e_1}$ and~$\gen{e_2}$ form a set of representatives for the~\dash{$B$}{orbits} on~$X'$.
+This shows that there exist precisely two~\dash{$B$}{orbits} on~$X'$, and hence two~\dash{$B$}{orbits} on~$X$.
+The two orbits have as a set of representatives the two flags
+\begin{equation}
+  \label{flag representatives}
+            0
+  \subseteq \gen{e_1}
+  \subseteq k^2 \,,
+  \qquad
+            0
+  \subseteq \gen{e_2}
+  \subseteq k^2 \,.
+\end{equation}
+
+
+
+
+
+\subsection{}
+
+It holds for every~$h \in B$ that~$h.\gen{e_1} = \gen{e_1}$.
+The orbit of the flag~$F^1 = (0 \subseteq \gen{e_1} \subseteq k^2)$ consists therefore of only~$F^1$ itself.
+It follows from
+\[
+    |X|
+  = |G/B|
+  = \frac{|G|}{|B|}
+  = \frac{(q^2 - 1)(q^2 - q)}{(q-1)^2 q}
+  = \frac{q(q+1)(q-1)^2}{(q-1)^2 q}
+  = q+1
+\]
+that the other orbit, namely the one of~$F^2 = (0 \subseteq \gen{e_2} \subseteq k^2)$, consists of~$q$ elements.
+
+
+
+
+
+\subsection{}
+
+The group~$B$ acts on~$G$ from the left by left multiplication, and from the right by right multiplication.
+The space~$H_q$ consists of all functions~$f \colon G \to \Complex$ which are both left invariant and right invariant under these actions of~$B$.
+These are precisely those functions~$f \colon G \to \Complex$ which are constants on the double cosets
+\[
+    BgB
+  = \{
+      b_1 g b_2
+    \suchthat
+      b_1, b_2 \in B
+    \}
+\]
+for~$g \in G$.
+For the set of double cosets
+\[
+    B \backslash G / B
+  = \{
+      B g B
+    \suchthat
+      g \in G
+    \}
+\]
+a basis of~$H_q$ is therefore given by the characteristic functions~$I_D$ of the double cosets~$D \in B \backslash G / B$.
+We can determine~$B \backslash G / B$ with the following lemma:
+
+\begin{lemma}
+  \label{double cosets}
+  Let~$G$ be a group and let~$K, H \subseteq G$ be two subgroups.
+  Then the map
+  \[
+            H \backslash (G / K)
+    \to     H \backslash G / K \,,
+    \quad   H(gK)
+    \mapsto HgK
+  \]
+  is a {\welldef} bijection.
+\end{lemma}
+
+\begin{proof}
+  We start with the {\welldef} map
+  \[
+            \varphi''
+    \colon  G
+    \to     H \backslash G / K
+    \quad   g
+    \mapsto H g K \,.
+  \]
+  It holds for all~$g \in g$ an~$k \in K$ that
+  \[
+      \varphi''(g \cdot k)
+    = H g k K
+    = H g K
+    = \varphi''(g) \,,
+  \]
+  which shows that~$\varphi''$ descends to a {\welldef} map
+  \[
+            \varphi'
+    \colon  G / K
+    \to     H \backslash G / K
+    \quad   gK
+    \mapsto H g K \,.
+  \]
+  It holds for all~$h \in H$ and~$gK \in G/K$ that
+  \[
+      \varphi'(h \cdot gK)
+    = H hg K
+    = H g K
+    = \varphi'(gK) \,,
+  \]
+  which shows that~$\varphi'$ further descends to a {\welldef} map
+  \[
+            \varphi
+    \colon  H \backslash (G / K)
+    \to     H \backslash G / K
+    \quad   H(gK)
+    \mapsto H g K \,.
+  \]
+  We find in the same way that the {\welldef} map
+  \[
+            \psi'
+    \colon  G
+    \to     H \backslash (G / K) \,,
+    \quad   g
+    \mapsto H(gK)
+  \]
+  satisfies
+  \[
+      \psi'(h \cdot g \cdot k)
+    = H((hgk)K)
+    = H(hgkK)
+    = H(hgK)
+    = (Hh)(gK)
+    = HgK
+    = \psi'(g)  \,,
+  \]
+  and therefore descends to a {\welldef} map
+  \[
+            \psi'
+    \colon  H \backslash G / K
+    \to     H \backslash (G / K) \,,
+    \quad   KgK
+    \mapsto H(gK) \,.
+  \]
+  The maps~$\varphi$ and~$\psi$ are inverse to each other, which shows that~$\varphi$ is a bijection.
+\end{proof}
+
+
+We have already seen that~$B \backslash (G / B)$ has (for~$n = 2$) precisely two elements.
+It follows from \cref{double cosets} that~$B \backslash G / B$ has precisely two elements.
+One of those is $B 1 B = B$, the other one is the complement~$B' \defined G \smallsetminus B$ (because~$G$ is the disjoint union of the double cosets in~$B \backslash G / B$).
+
+The space~$H_q$ has therefore two basis elements, namely the characteristic functions~$I_B$ and~$I_{B'}$.
+
+To determine the algebra structure on~$H_q$ we first check that the given multiplication is both {\welldef} and associative.
+
+We have for all~$f_1, f_2 \in H_q$ that
+\begin{align*}
+      (f_1 \cdot f_2)(bg)
+  &=  \frac{1}{\card{B}} \sum_{y \in G} f_1(y) f_2(y^{-1} b g)  \\
+  &=  \frac{1}{\card{B}} \sum_{y \in G} f_1(by) f_2((by)^{-1} bg) \\
+  &=  \frac{1}{\card{B}} \sum_{y \in G} f_1(by) f_2(y^{-1} b^{-1} bg) \\
+  &=  \frac{1}{\card{B}} \sum_{y \in G} f_1(by) f_2(y^{-1} g) \\
+  &=  \frac{1}{\card{B}} \sum_{y \in G} f_1(y) f_2(y^{-1} g)  \\
+  &=  (f_1 \cdot f_2)(g) \,,
+\end{align*}
+and
+\[
+    (f_1 \cdot f_2)(gb)
+  = \frac{1}{\card{B}} \sum_{y \in G} f_1(y) f_2(y^{-1} g b)
+  = \frac{1}{\card{B}} \sum_{y \in G} f_1(y) f_2(y^{-1} g)
+  = (f_1 \cdot f_2)(g)
+\]
+for all~$g \in G$ and~$b u/n B$, which shows that again~$f_1 \cdot f_2 \in H_q$.
+To show that the multiplication is associative we first note that for~$f_1 \cdot f_2 \in H_q$ the product can also be written as
+\[
+    (f_1 \cdot fv2)(g)
+  = \frac{1}{\card{B}} \sum_{y \in G} f_1(y) f_2(y^{-1} b g)
+  = \frac{1}{\card{B}} \sum_{\substack{y, y' \in G \\ y y' = g}} f_1(y) f_2(y') \,.
+\]
+With this we find for all~$f_1, f_2, f_3 \in H_q$ that
+\begin{align*}
+      (f_1 \cdot (f_2 \cdot f_3)(g)
+  &=  \frac{1}{\card{B}}
+      \sum_{\substack{y, y' \in G \\ y y' = g}}
+      f_1(y) (f_2 \cdot f_3)(y')  \\
+  &=  \frac{1}{\card{B}^2}
+      \sum_{\substack{y, y' \in G \\ y y' = g}}
+      f_1(y)
+      \sum_{\substack{y'', y''' \in G \\ y'' y''' = y'}}
+      f_2(y'') f_3(y''')  \\
+  &=  \frac{1}{\card{B}^2}
+      \sum_{\substack{y, y', y'' \in G \\ y y' y'' = g}}
+      f_1(y) f_2(y') f_3(y'') \,.
+\end{align*}
+We also find in the same way that
+\[
+    ((f_1 \cdot f_2) \cdot f_3)(g)
+  = \frac{1}{\card{B}^2}
+    \sum_{\substack{y, y', y'' \in G \\ y y' y'' = g}}
+    f_1(y) f_2(y') f_3(y'') \,,
+\]
+which then shows that~$f_1 \cdot (f_2 \cdot f_3) = (f_1 \cdot f_2) \cdot f_3$.
+
+We now show that
+\begin{align*}
+  I_B \cdot I_B       &=  I_B \,, \\
+  I_B \cdot I_{B'}    &=  I_{B'} \,,  \\
+  I_{B'} \cdot I_B    &=  I_{B'} \,,  \\
+  I_{B'} \cdot I_{B'} &=  q I_B + (q-1) I_{B'} \,.
+\end{align*}
+With this we have achieved the following things:
+\begin{itemize}
+  \item
+    This describes the multiplication of~$H_q$ in terms of the given basis of~$H_q$.
+  \item
+    It shows that~$I_B$ is the multiplicative neutral element for~$H_q$.
+  \item
+    We see that for~$q = 1$ we get the group algebra~$\Complex[\Integer/2]$.
+\end{itemize}
+
+Indeed, it holds for every~$f \in H_q$ that
+\begin{align*}
+      (I_B \cdot f)(g)
+  &=  \frac{1}{\card{B}}
+      \sum_{y \in G}
+      I_B(y) f(y^{-1} g)  \\
+  &=  \frac{1}{\card{B}}
+      \sum_{b \in B}
+      f(b^{-1} g)
+   =  \frac{1}{\card{B}}
+      \sum_{b \in B}
+      f(g)
+   =  \frac{\card{B}}{\card{B}} f(g)
+   =  f(g)
+\end{align*}
+and similarly that
+\begin{align*}
+      (f \cdot I_B)(g)
+  &=  \frac{1}{\card{B}}
+      \sum_{y \in G}
+      f(y) I_B(y^{-1} g)
+   =  \frac{1}{\card{B}}
+      \sum_{y \in G}
+      f(gy) I_B((gy)^{-1} g)  \\
+  &=  \frac{1}{\card{B}}
+      \sum_{y \in G}
+      f(gy) I_B(y^{-1})
+   =  \frac{1}{\card{B}}
+      \sum_{y \in G}
+      f(gy^{-1}) I_B(y) \\
+  &=  \frac{1}{\card{B}}
+      \sum_{b \in B}
+      f(gb)
+   =  \frac{1}{\card{B}}
+      \sum_{b \in B}
+      f(g)
+   =  \frac{\card{B}}{\card{B}} f(g)
+   =  f(g) \,.
+\end{align*}
+We have for every~$b \in B$ that
+\begin{align}
+      (I_{B'} \cdot I_{B'})(b)
+  &=  \frac{1}{\card{B}}
+      \sum_{y \in G}
+      I_{B'}(y) I_{B'}(y^{-1} b)  \notag  \\
+  &=  \frac{1}{\card{B}}
+      \sum_{b' \in B'}
+      I_{B'}(b'^{-1} b) \notag  \\
+  &=  \frac{1}{\card{B}}
+      \sum_{b' \in B'}
+      \underbrace{I_{B'}(b'^{-1})}_{=1} \notag  \\
+  &=  \frac{\card{B'}}{\card{B}}  \label{is constant} \\
+  &=  q \label{counting quotient} \,,
+\end{align}
+where we use for~\eqref{is constant} that~$b' \in B$ if and only if~$b'^{-1} \in B$, and therefore
+\[
+        b'^{-1} \in B'
+  \iff  b'^{-1} \notin B
+  \iff  b' \notin B
+  \iff  b' \in B' \,,
+\]
+and we use for~\eqref{counting quotient} that
+\[
+    \frac{\card{B'}}{\card{B}}
+  = \frac{\card{G} - \card{B}}{\card{B}}
+  = \frac{\card{G}}{\card{B}} - 1
+  = (q + 1) - 1
+  = q \,.
+\]
+Lastly, we have for~$b' \in B'$ that
+\begin{align}
+      (I_{B'} \cdot I_{B'})(b')
+  &=  \frac{1}{\card{B}}
+      \sum_{y \in G}
+      I_{B'}(y) I_{B'}(y^{-1} b') \notag  \\
+  &=  \frac{1}{\card{B}}
+      \sum_{b'' \in B'}
+      I_{B'}(b''^{-1} b') \notag  \\
+  &=  \frac{1}{\card{B}}
+      \sum_{\substack{b'' \in B' \\ b'' \notin b' B}}
+      \underbrace{I_{B'}(b''^{-1} b')}_{=1} \label{change sum}  \\
+  &=  \frac{\card{B' \smallsetminus b' B}}{\card{B}}  \notag  \\
+  &=  \frac{\card{B'} - \card{b' B}}{\card{B}} \label{difference}  \\
+  &=  \frac{\card{B'} - \card{B}}{\card{B}} \notag  \\
+  &=  \frac{\card{B'}}{\card{B}} - 1  \notag  \\
+  &=  q - 1 \notag  \,,
+\end{align}
+where use for~\eqref{change sum} that
+\[
+        b''^{-1} b' \notin  B
+  \iff  b'' B \neq b' B
+  \iff  b'' \notin b' B \,,
+\]
+and use for~\eqref{difference} that~$b' B \subseteq B'$ because~$b' \notin B$.
+
+
+\begin{remark}
+  One can show more generally that
+  \[
+      B \backslash G / B
+    = \coprod_{\sigma \in S_n} B P_\sigma B \,,
+  \]
+  where~$P_\sigma$ is the permutation matrix associated to~$\sigma \in S_n$.
+  This decomposition is known as the \emph{Bruhat decomposition} of~$\GL_n(k)$, and can be seen as a version of the Gauß algorithm.
+  
+  This then shows that~$H_q$ has a basis indexed by the symmetric group~$S_n$.
+  The algebra~$H_q$ is known as the \emph{Hecke algebra} of~$S_n$, and can be seen as the deformation of the groups algebra~$\Complex[S_n]$ along a parameter~$q$.
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
