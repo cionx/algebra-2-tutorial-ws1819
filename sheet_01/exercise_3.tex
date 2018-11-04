@@ -1,1 +1,224 @@
-\addtocounter{section}{1}
+\section{}
+
+
+
+
+
+\subsection{}
+
+It should be remarked that the isomorphism~$k[G] \cong k[x]/(x^{p^r})$ depends heavily on the fact that~$\ringchar(k) = 0$:
+While the isomorphism
+\[
+        k[G]
+  \cong k[\Integer/p^r]
+  \cong k[x](x^{p^r} - 1)
+\]
+holds for every field~$k$, the further isomorphism
+\[
+        k[x]/(x^{p^r} - 1)
+  \cong k[x](x^{p^r})
+\]
+uses that
+\[
+    x^{p^r} - 1
+  = x^{p^r} - 1^{p^r}
+  = (x - 1)^{p^r} \,.
+\]
+If for example~$k = \Complex$ instead, then
+\[
+    x^{p^r} - 1
+  = (x - \omega_1) \dotsm (x - \omega_{p^r})
+\]
+for the~\dash{$p^r$} {th} roots of unity~$\omega_1, \dotsc, \omega_{p^r} \in \Complex$ given by~$\omega_j = e^{2 \pi i j / p^r}$.
+The roots~$\omega_1, \dotsc, \omega_{p^r}$ are pairwise distinct and so it follows from the chinese reminder theorem that
+\begin{align*}
+          \Complex[G]
+   \cong  \Complex[x]/(x^{p^r} - 1)
+  &\cong  \Complex[x]( (x - \omega_1) \dotsm (x - \omega_{p^r}) ) \\
+  &\cong  \prod_{j=1}^{p^r} \Complex[x]/(x - \omega_j)
+   \cong  \prod_{j=1}^{p^r} \Complex
+   =      \Complex^{\times p^r} \,.
+\end{align*}
+
+
+
+
+
+
+
+\subsection{}
+
+We have seen in the tutorial how one can use the first part of the exercise to classify the {\fd} indecomposable and irreducible representations of~$G$ over~$k$.
+But one can also classify these modules using linear algebra, effectively ignoring the first part of the exercise:
+
+Let~$V$ be a representation of~$G$ over~$k$.
+Then the cyclic generator~$g \in G$ acts on~$V$ via an endomorphisms
+\[
+          \varphi
+  \colon  V
+  \to     V \,,
+  \quad   v
+  \mapsto g.v \,.
+\]
+It follows from~$g^{p^r} = 1$ that~$\varphi^{p^r} = \id$, and hence
+\[
+    0
+  = \varphi^{p^r} - \id
+  = \varphi^{p^r} - \id^{p^r}
+  = (\varphi - \id)^{p^r}
+  = p(\varphi)
+\]
+for the polynomial~$p(t) \defined (t-1)^{p^r} \in k[t]$, where we use that~$\ringchar(k) = p$.
+If the vector space~$V$ is {\fd}\footnote{We don’t actually need this assumption.} then this shows that~$\varphi$ is triangularizable with~$1$ as its only eigenvalue.
+We can therefore consider its Jordan normal form, which is with respect to a suitable basis~$B = (b_1, \dotsc, b_n)$ of~$V$ given by
+\[
+    J
+  = \begin{bmatrix}
+      J_1 &         &       \\
+          & \ddots  &       \\
+          &         & J_s
+    \end{bmatrix}
+\]
+with (unipotent) Jordan blocks
+\[
+    J_i
+  = \begin{bmatrix}
+      1 &       1 &         &   \\
+        & \ddots  & \ddots  &   \\
+        &         & \ddots  & 1 \\
+        &         &         & 1
+    \end{bmatrix}
+  \in \mat{n_i}{k} \,.
+\]
+The decomposition of~$J$ as a block diagonal matrix corresponds to a decomposition of~$V$ into~\dash{$\varphi$}{invariant} subspaces.
+More precisely, if we set
+\begin{align*}
+            U_1
+  &\defined \gen{b_1, \dotsc, b_{n_1}}_k  \,, \\
+            U_2
+  &\defined \gen{b_{n_1 + 1}, \dotsc, b_{n_1 + n_2}}_k \,,  \\
+  &\;\;\,\vdots  \\
+            U_s
+  &\defined \gen{b_{n_1 + \dotsb + n_{s-1} + 1}, \dotsc, b_n}_k
+\end{align*}
+then~$V = U_1 \oplus \dotsb \oplus U_s$ is a decomposition into~\dash{$\varphi$}{invariant} subspaces, and hence a decomposition into subrepresentations.
+
+For~$V$ to be indecomposable we need that~$s = 1$.
+We have thus shown that for every {\fd} indecomposable representation of~$G$ over~$k$ there exists a basis of~$V$ with respect to which the action of the cylic generator~$g \in G$ is given by the matrix
+\[
+  U_n
+  \defined
+  \begin{bmatrix}
+    1 &       1 &         &   \\
+      & \ddots  & \ddots  &   \\
+      &         & \ddots  & 1 \\
+      &         &         & 1
+  \end{bmatrix}
+  \in \mat{n}{k} \,,
+\]
+where~$n = \dim(V)$.
+This observation results in a classification of all~{\fd} indecomposable and irreducible representations of~$G$ over~$k$:
+
+
+\begin{proposition}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      For every~$n = 0, \dotsc, p^r$ there exists a unique linear action of~$G$ on~$k^n$ such that the cyclic generator~$g \in G$ acts by multiplication with the matrix~$U_n$.
+  \end{enumerate}
+  We denote the resulting~\dash{$n$}{dimensional} representation of~$G$ by~$V_n$.
+  \begin{enumerate}[resume]
+    \item
+      \label{classification of subrep}
+      The subrepresentations of~$V_n$ are precisely~$W_i \defined \gen{e_1, \dotsc, e_i}_k$ for~$i = 0, \dotsc, n$.
+    \item
+      The representations~$V_n$ with~$n = 1, \dotsc, p^r$ are indecomposable.
+      The representation~$V_n$ is irreducible if and only if~$n = 1$.
+    \item
+      The indecomposable representations~$V_1, \dotsc, V_{p^r}$ are a set of representatives for the {\fd} indecomposable representations of~$G$ over~$k$.
+      The representation~$V_1$ is up to isomorphism the only irreducible representation of~$G$ over~$k$.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      We need to show that there exists a unique group homomorphism~$\rho \colon G \to \GL_n(k)$ with~$\varphi(g) = U_n$.
+      The uniqueness follows from~$G$ being generated by~$g$.
+      For the existence we note that~$G \cong \Integer/p^r\Integer$, which tell us that we only have to check that~$U_n^{p^r} = \Id$.
+      This holds, for if we write
+      \begin{gather*}
+          U_n
+        = \Id + N_n
+      \shortintertext{with}
+          N_n
+        = \begin{bmatrix}
+            0 & 1       &         &   \\
+              & \ddots  & \ddots  &   \\
+              &         & \ddots  & 1 \\
+              &         &         & 0
+          \end{bmatrix}
+      \end{gather*}
+      then the matrices~$\Id$ and~$N_n$ commute, and it follows that
+      \[
+          U_n^{p^r}
+        = (\Id + N_n)^{p^r}
+        = \Id^{p^r} + N_n^{p^r}
+        = \Id + 0
+        = \Id \,.
+      \]
+      
+    \item
+      We abbreviate~$N \defined N_n$.
+      The subrepresentations of~$V_n$ are precisely the~\dash{$U_n$}{invariant} subspaces, which are by the decomposition~$U_n = \Id + N$ precisely the~\dash{$N$}{invariant} subspaces (because every subspace is~\dash{$\Id$}{invariant}).
+      The subspaces~$W_i$ are~\dash{$N$}{invariant} because~$N e_j = e_{j-1}$.
+      
+      To show that every \dash{$N$}{invariant} subspaces~$W \subseteq V$ is of the form~$W = W_i$ for some~$i$ it sufficies to show that for every~$x \in V$ the generated~\dash{$N$}{invariant} subspace
+      \[
+          \gen{ x }
+        = \gen{ x, N x, N^2 x, \dotsc }_k
+      \]
+      is of the form~$W_i$ for some~$i$;
+      it then follows that~$W = \sum_{x \in W} \gen{x}$ is again of the form~$W_i$ for some~$i$.
+      
+      If
+      \[
+          x
+        = \vect{x_1 \\ \vdots \\ x_i \\ 0 \\ \vdots \\ 0 }
+      \]
+      with~$x_i \neq 0$ then~$N^j x \subseteq W_i$ for every~$j \geq 0$ and hence~$\gen{x} \subseteq W_i$.
+      We have on the other hand that
+      \[
+        x
+        = \vect{x_1 \\ \vdots \\ x_{i-1} \\ x_i \\ 0 \\ \vdots \\ 0 } \,,
+        \qquad
+        N x
+        = \vect{x_2 \\ \vdots \\ x_i \\ 0 \\ 0 \\ \vdots \\ 0 } \,,
+        \qquad
+        \dotsc,
+        \qquad
+        N^{i-1} x
+        = \vect{x_i \\ 0 \\ \vdots \\ \vdots \\ \vdots \\ 0}
+      \]
+      are linearly independent, and hence
+      \[
+              \dim \gen{x}
+        \geq  i
+        =     \dim W_i \,.
+      \]
+      Together this shows that~$\gen{x} = W_i$.
+      
+    \item
+      This follows from part~\ref{classification of subrep}.
+      
+    \item
+      We have seen previously that every {\fd} indepecomposable representation of~$G$ over~$k$ is isomorphic to some~$V_n$.
+      The representations~$V_1, \dotsc, V_{p^r}$ are pairwise \dash{non}{isomorphic} because they have different dimensions.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
+
