@@ -1,0 +1,121 @@
+\usepackage{xparse} % defining certain macros
+\usepackage{microtype}  % better typography
+\usepackage{enumitem} % better list type environments
+\usepackage{csquotes} % quotes
+\usepackage{amsmath, amssymb, amsthm, mathtools} % smath stuff
+\usepackage{extarrows} % xlongrightarrow
+\usepackage{bbm}
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}  % smarter referencing, load after hyperref
+
+
+% prevents breaking inline math around binary or relationship symbols
+\binoppenalty=\maxdimen
+\relpenalty=\maxdimen
+
+
+% colours for hyperref
+\hypersetup{
+    colorlinks,
+    linkcolor={green!35!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+
+% fonts for titlepage
+\setkomafont{publishers}{\normalsize}
+
+% settings for list like environments
+\setlist[enumerate, 1]{leftmargin=*, align=left, label=\arabic*)}
+\setlist[itemize, 1]{leftmargin=*}
+\setlist[itemize, 2]{leftmargin=*, label={\textopenbullet}}
+
+
+% redefine how counters are printed
+\setcounter{secnumdepth}{2}
+\renewcommand{\thesection}{Exercise \arabic{section}.}
+\renewcommand{\thesubsection}{(\alph{subsection})}
+
+
+% define theorem like environments
+\newcounter{everything}
+\theoremstyle{definition}
+\newtheorem{lemma}[everything]{Lemma}
+\newtheorem{proposition}[everything]{Proposition}
+
+
+% text shortcuts
+\newcommand{\dash}[2]{#1\nobreakdash-#2}
+\newcommand{\fd}{finite\nobreakdash-dimensional}
+\newcommand{\kbasis}{$k$\nobreakdash-basis}
+\newcommand{\kbil}{$k$\nobreakdash-bilinear}
+\newcommand{\klin}{$k$\nobreakdash-linear}
+\newcommand{\kvs}{$k$\nobreakdash-vector space}
+\newcommand{\twosided}{two\nobreakdash-sided}
+\newcommand{\welldef}{well\nobreakdash-defined}
+\NewDocumentCommand{\module}{m o}{%
+  \IfNoValueTF{#2}{{#1}\nobreakdash-module}
+                  {{#1}\nobreakdash-{#2}\nobreakdash-bimodule}%
+}
+\NewDocumentCommand{\modules}{m o}{%
+  \IfNoValueTF{#2}{{#1}\nobreakdash-modules}
+                  {{#1}\nobreakdash-{#2}\nobreakdash-bimodules}%
+}
+\NewDocumentCommand{\submodule}{m o}{%
+  \IfNoValueTF{#2}{{#1}\nobreakdash-submodule}
+                  {{#1}\nobreakdash-{#2}\nobreakdash-bisubmodule}%
+}
+\NewDocumentCommand{\submodules}{m o}{%
+  \IfNoValueTF{#2}{{#1}\nobreakdash-submodules}
+                  {{#1}\nobreakdash-{#2}\nobreakdash-bisubmodules}%
+}
+
+
+% math shortcuts
+\newcommand{\longto}{\longrightarrow}
+\newcommand{\vect}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\xlongto}{\xlongrightarrow}
+\newcommand{\xto}{\xrightarrow}
+
+
+% relations
+\newcommand{\defined}{\coloneqq}
+\newcommand{\defines}{\eqqcolon}
+\newcommand{\tensor}{\otimes}
+
+
+% important sets
+\newcommand{\Natural}{\mathbb{N}}
+\newcommand{\Integer}{\mathbb{Z}}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Complex}{\mathbb{C}}
+
+
+% space and set constructions
+\DeclareMathOperator{\End}{End}
+\DeclarePairedDelimiter{\gen}{\langle}{\rangle}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Hom}{Hom}
+\newcommand{\mat}[2]{\operatorname{M}_{#1}(#2)}
+\newcommand{\mnat}[3]{\operatorname{M}(#1 \times #2, #3)}
+
+
+% functions and functors
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\Id}{\mathbbm{1}}
+\DeclareMathOperator{\ringchar}{char}
+
+
+% custom macros with case distinctions
+\NewDocumentCommand{\suchthat}{s}{
+  \IfBooleanTF{#1}
+    {\,\middle|\,}
+    {\mathrel{|}}       
+}
+\NewDocumentCommand{\restrict}{smmO{}}{
+  \IfBooleanTF{#1}
+    {\left. {#2} \,\middle|_{#3}^{#4} \right.}
+    {{#2}\,|_{#3}^{#4}}
+}
