@@ -1,0 +1,210 @@
+\section{}
+
+
+
+
+
+\subsection{}
+It follows from the Newton identities of part~\ref*{newton identity} inductively that
+\begin{align*}
+      p_1
+  &=  e_1 \,,
+  \\
+      p_2
+  &=  e_1 p_1 - 2 e_2 \\
+  &=  e_1^2 - 2 e_2 \,,
+  \\
+      p_3
+  &=  e_1 p_2 - e_2 p_1 + 3 e_3 \\
+  &=  e_1 ( e_1^2 - 2 e_2 ) - e_2 e_1 + 3 e_3 \\
+  &=  e_1^3 - 3 e_1 e_2 + 3 e_3 \,,
+  \\
+      p_4
+  &=  e_1 p_3 - e_2 p_2 + e_3 p_1 - 4 e_4 \\
+  &=  e_1 ( e_1^3 - 3 e_1 e_2 + 3 e_3) - e_2 ( e_1^2 - 2 e_2 ) + e_3 e_1 - 4 e_4  \\
+  &=  e_1^4 - 3 e_1^2 e_2 + 3 e_1 e_3 - e_1^2 e_2 + 2 e_2^2 + e_1 e_3 - 4 e_4 \\
+  &=  e_1^4 - 4 e_1^2 e_2 + 4 e_1 e_3 + 2 e_2^2 - 4 e_4 \,.
+\end{align*}
+
+
+
+
+
+\subsection{}
+\label{newton identity}
+
+We consider the generating series
+\[
+    E(t)
+  = \sum_{r \geq 0} e_r t^r
+  \quad\text{and}\quad
+    P(t)
+  = \sum_{r \geq 0} p_{r+1} t^r \,,
+\]
+for which we know from the lecture that
+\[
+    E(t)
+  = \prod_{i=1}^n (1 + X_i t)
+  \quad\text{and}\quad
+    P(t)
+  = \sum_{i=1}^n \frac{X_i}{1 - X_i t} \,.
+\]
+It follows that
+\[
+    E'(t)
+  = \sum_{i=1}^n X_i \prod_{j \neq i} (1 + X_j t)
+  = \sum_{i=1}^n \frac{X_i}{1 + X_i t} \prod_{j=1}^n (1 + X_j t)
+  = P(-t) E(t) \,.
+\]
+By comparing the~\dash{$(r-1)$}{th} coefficients of both~$E'(t)$ and~$P(-t)E(t)$ we find that
+\begin{align*}
+   {}&  r e_r \\
+  ={}&  p_1 e_{r-1} - p_2 e_{r-2} + \dotsb + (-1)^r p_{r-1} e_1 + (-1)^{r+1} p_r e_0  \\
+  ={}&  p_1 e_{r-1} - p_2 e_{r-2} + \dotsb + (-1)^r p_{r-1} e_1 + (-1)^{r+1} p_r  \,,
+\end{align*}
+which can now be rearranged to the desired equality (which is known as the \emph{Newton identity}).
+
+
+
+
+
+\subsection{}
+
+We give two possible solutions:
+
+
+
+\subsubsection{First Solution}
+
+We denote the given matrix on the right hand side by~$M_r$.
+We will show that~$\det M_r = p_r$ by induction on~$r \geq 1$.
+For~$r = 1$ we have that
+\[
+    \det( M_1 )
+  = \det
+    \begin{bmatrix}
+      e_1
+    \end{bmatrix}
+  = e_1
+  = p_1 \,.
+\]
+For general~$m$ we expand the determinant of~$M_r$ with respect to the last row, i.e.\ the~\dash{$r$}{th} row.
+The~\dash{$(r,1)$}{th} minor of~$M_r$ is given by
+\[
+    \det( M_r^{(r,1)} )
+  = \det
+    \begin{bmatrix}
+      1       &         &   \\
+      \vdots  & \ddots  &   \\
+      1       & \cdots  & 1
+    \end{bmatrix}
+  = (-1)^{r+1} \,,
+\]
+and for every~$j = 2, \dotsc, r$ the~\dash{$(r,j)$}{th} minor of~$M_r$ is by induction hypotheses given by
+\[
+    \det( M_r^{(r,j)} )
+  = \det
+    \begin{bmatrix}
+      M_{j-1}   &         &         &   \\
+      *         & 1       &         &   \\
+      *         & \vdots  & \ddots  &   \\
+      *         & 1       & \cdots  & 1
+    \end{bmatrix}
+  = \det( M_{j-1} )
+  = p_{j-1} \,.
+\]
+It follows that
+\begin{align*}
+   {}&  \det(M_r) \\
+  ={}&    (-1)^{r+1} r e_r\det( M_r^{(r,1)} )
+        + (-1)^{r+2} e_{r-1} \det( M_r^{(r,2)} )
+        + \dotsb
+        + (-1)^{2r}  e_1 \det( M_r^{(r,r)} )  \\
+  ={}&    (-1)^{r+1} r e_r
+        + (-1)^{r+2} e_{r-1} p_1
+        + \dotsb
+        + (-1)^{2r} e_1 p_{r-1} \\
+  ={}&    e_1 p_{r-1}
+        - e_2 p_{r-2}
+        + \dotsb
+        + (-1)^{r+1} r e_r  \\
+  ={}&  p_r
+\end{align*}
+by the Newton identities from part~\ref*{newton identity} of the exercise.
+
+
+
+
+
+\subsubsection{Second Solution}
+
+We may rewrite the Newton identities from part~\ref{newton identity} as
+\[
+    r e_r
+  =   (-1)^{r-1} p_r
+    + (-1)^{r-2} p_{r-1} e_1
+    + \dotsb
+    + p_1 e_{r-1} \,,
+\]
+which can be written in matrix form as
+\[
+  \begin{bmatrix}
+    1       &         &         &         &     &   \\
+    e_1     & 1       &         &         &     &   \\
+    e_2     & e_1     & 1       &         &     &   \\
+    \vdots  & \vdots  & \vdots  & \ddots  &     &   \\
+    e_{r-2} & e_{r-3} & e_{r-4} & \cdots  & 1   &   \\
+    e_{r-1} & e_{r-2} & e_{r-3} & \cdots  & e_1 & 1
+  \end{bmatrix}
+  \vect{p_1 \\ -p_2 \\ p_3 \\ \vdots \\ (-1)^{r-2} p_{r-1} \\ (-1)^{r-1} p_r}
+  =
+  \vect{e_1 \\ 2 e_2 \\ 3 e_3 \\ \vdots \\ (r-1) e_{r-1} \\ r e_r} \,.
+\]
+The matrix~$A$ on the left hand side of this equation is invertible (because it has determinant~$1$), and it follows from Cramer’s rule and~$\det(A) = 1$ that
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+      (-1)^{r-1} p_r
+  &=  \det
+      \begin{bmatrix}
+        1       &         &         &         &     &   e_1         \\
+        e_1     & 1       &         &         &     & 2 e_2         \\
+        e_2     & e_1     & 1       &         &     & 3 e_3         \\
+        \vdots  & \vdots  & \vdots  & \ddots  &     & \vdots        \\
+        e_{r-2} & e_{r-3} & e_{r-4} & \cdots  & 1   & (r-1) e_{r-1} \\
+        e_{r-1} & e_{r-2} & e_{r-3} & \cdots  & e_1 & r e_r
+      \end{bmatrix}
+  \\
+  &=  (-1)^{r-1}
+      \det
+      \begin{bmatrix}
+        1       &         &         &         &     &   e_1         \\
+        e_1     & 1       &         &         &     & 2 e_2         \\
+        e_2     & e_1     & 1       &         &     & 3 e_3         \\
+        \vdots  & \vdots  & \vdots  & \ddots  &     & \vdots        \\
+        e_{r-2} & e_{r-3} & e_{r-4} & \cdots  & 1   & (r-1) e_{r-1} \\
+        e_{r-1} & e_{r-2} & e_{r-3} & \cdots  & e_1 & r e_r
+      \end{bmatrix}
+  \\
+  &=  (-1)^{r-1}
+      \det
+      \begin{bmatrix}
+          e_1         & 1       &         &         &         &     \\
+        2 e_2         & e_1     & 1       &         &         &     \\
+        3 e_3         & e_2     & e_1     & 1       &         &     \\
+        \vdots        & \vdots  & \vdots  & \vdots  & \ddots  &     \\
+        (r-1) e_{r-1} & e_{r-2} & e_{r-3} & e_{r-4} & \cdots  & 1   \\
+        r e_r         & e_{r-1} & e_{r-2} & e_{r-3} & \cdots  & e_1
+      \end{bmatrix} \,.
+\end{align*}
+\endgroup
+
+
+
+
+
+
+
+
+
+

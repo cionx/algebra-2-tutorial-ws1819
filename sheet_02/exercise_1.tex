@@ -1,0 +1,269 @@
+\section{}
+
+In the following,~${\tensor} = {\tensor_k}$ denotes the tensor product over~$k$.
+
+
+
+
+
+\subsection{}
+
+Let~$U$ be a~{\kvs}.
+We have seen in the lecture that a~{\module{$k[G]$}} structure on~$U$ (which extends the given vector space structure) is \enquote{the same} as the structure of a representation of~$G$ on~$U$.
+We have also seen that for any two representations~$V$ and~$W$ of~$G$ over~$k$ their tensor product~$V \tensor W$ is again a representation of~$G$, where~$G$ acts linearly on~$V \tensor W$ so that
+\[
+    g.(v \tensor w)
+  = (g.v) \tensor (g.w)
+\]
+for all~$g \in G$ and all simple tensors~$v \tensor w \in V \tensor W$.
+
+By combining these two observations, we find that for any two~{\modules{$k[G]$}}~$V$ and~$W$ their tensor product~$V \tensor W$ carries again the structure of a~{\module{$k[G]$}} so that
+\[
+    \left( \sum_{g \in G} a_g g \right) \cdot (v \tensor w)
+  = \sum_{g \in G} a_g g.(v \tensor w)
+  = \sum_{g \in G} a_g (gv) \tensor (gw)
+\]
+for all~$\sum_{g \in G} a_g g \in k[G]$ and all simple tensors~$v \tensor w \in V \tensor W$.
+
+
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      If~$A$ is a~{\kalg} and~$M$ and~$N$ are two~{\modules{$A$}} then their tensor product~$M \tensor N$ does in general have no good~{\module{$A$}} structure again.
+      To be more precise:
+      \begin{itemize}
+        \item
+          We can define an \enquote{action} of~$A$ on~$M \tensor A$ so that
+          \[
+              a \cdot (m \tensor n)
+            = (am) \tensor (an)
+          \]
+          for all~$a \in A$ and all simple tensors~$m \tensor n \in M \tensor N$.
+          But this does in general not define a module structure, because
+          \begin{align*}
+             {}&  (a_1 + a_2) \cdot (m \tensor n) \\
+            ={}&  ((a_1 + a_2) m) \tensor ((a_1 + a_2) n) \\
+            ={}&  (a_1 m + a_2 m) \tensor (a_1 n + a_2 n) \\
+            ={}&    (a_1 m) \tensor (a_1 n)
+                  + (a_1 m) \tensor (a_2 n)
+                  + (a_2 m) \tensor (a_1 n)
+                  + (a_2 m) \tensor (a_2 n) \,,
+          \end{align*}
+          while
+          \begin{align*}
+              a_1 \cdot (m \tensor n) + a_2 \cdot (m \tensor n)
+            = (a_1 m) \tensor (a_1 n) + (a_2 m) \tensor (a_2 n) \,.
+          \end{align*}
+        \item
+          We can define {\module{$A$}} structures on~$M \tensor A$ so that
+          \begin{gather*}
+              a \cdot (m \tensor n)
+            = (am) \tensor n
+          \shortintertext{or}
+              a \cdot (m \tensor n)
+            = m \tensor (an)
+          \end{gather*}
+          for all~$a \in A$ and all simple tensors~$m \tensor n \in M \tensor N$, but these do ignore the module structure on~$N$, or that on~$M$.
+      \end{itemize}
+      
+      Note that above, the action of~$k[G]$ on~$M \tensor N$ in \emph{not} given by~$a \cdot (m \tensor n) = (am) \tensor (an)$ for all~$a \in k[G]$ and all simple tensors~$m \tensor n \in M \tensor N$;
+      this formula holds only for~$a \in G$.
+    \item
+      If~$A$ and~$B$ are~{\kalgs} and~$M$ is an~{\modules{$A$}} and~$N$ is a~{\module{$B$}} then~$M \tensor N$ does carry the structure of an~{\module{($A \tensor B$)}} so that
+      \[
+          (a \tensor b) \cdot (m \tensor n)
+        = (am) \tensor (bn)
+      \]
+      for all simple tensors~$a \tensor b \in A \tensor B$ and all simple tensors~$m \tensor n \in M \tensor N$.
+    \item
+      It follows in particular that if~$A$ is a~{\kalg} and~$\Delta \colon A \to A \tensor A$ is an algebra homomorphism, then we can for any two~{\modules{$A$}}~$M$ and~$N$ pull back the~{\module{$(A \tensor A)$}} structure of~$M \tensor N$ along~$\Delta$ to an~{\module{$A$}} structure on~$M \tensor N$.
+      More explicitely, if~$a \in A$ with~$\Delta(a) = \sum_{i=1}^r a_{i,1} \tensor a_{i,2}$ for some~$a_{i,j} \in A$, then
+      \begin{align*}
+                  a \cdot (m \tensor n)
+        \defined  \Delta(a) \cdot (m \tensor n)
+        &=        \left( \sum_{i=1}^r a_{1,i} \tensor a_{2,i} \right) \cdot (m \tensor n) \\
+        &=        \sum_{i=1}^r (a_{1,i} m) \tensor (a_{2,i} n) \,.
+      \end{align*}
+      There are some remarks to be made about this:
+      \begin{itemize}
+        \item
+          If we want this tensor product of~{\modules{$A$}} to be associative, in the sense that for three~{\modules{$A$}}~$M$,~$N$,~$P$ the vector space isomorphism
+          \[
+                  (M \tensor N) \tensor P
+            \to   M \tensor (N \tensor P) \,,
+            \quad (m \tensor n) \tensor p
+            \to   m \tensor (n \tensor p)
+          \]
+          is already an isomorphism of~{\modules{$A$}}, we need the algebra homomorphism~$\Delta$ to satisfy the following coassociativity diagram:
+          \[
+            \begin{tikzcd}[sep = large]
+                A
+                \arrow{r}[above]{\Delta}
+                \arrow{d}[left]{\Delta}
+              & A \tensor A
+                \arrow{d}[right]{\id \tensor \Delta}
+              \\
+                A \tensor A
+                \arrow{r}[above]{\Delta \tensor \id}
+              & A \tensor A \tensor A
+            \end{tikzcd}
+          \]
+        \item
+          For the group algebra~$k[G]$ we have the following two observations:
+          \begin{itemize}
+            \item
+              Every group homomorphism~$f \colon G \to H$ induces an algebra homomorphism
+              \[
+                        F
+                \colon  k[G]
+                \to     k[H] \,,
+                \quad   \sum_{g \in G} a_g g
+                \mapsto \sum_{g \in G} a_g f(g) \,.
+              \]
+            \item
+              For any two groups~$G$ and~$H$ the unique~{\klin} map~$k[G \times H] \to k[G] \tensor k[H]$ which maps~$(g,h)$ to~$g \tensor h$ for all~$g \in G$ and~$h \in H$ is an algebra isomorphism.
+          \end{itemize}
+          By combining both of these observations we find that for every group~$G$ the diagonal map
+          \[
+                    \tilde{\Delta}
+            \colon  G
+            \to     G \times G  \,,
+            \quad   g
+            \mapsto (g,g)
+          \]
+          induces an algebra homomorphism
+          \[
+                    \Delta
+            \colon  k[G]
+            \to     k[G] \tensor k[G]
+          \]
+          with~$\Delta(g) = g \tensor g$ for all~$g \in G$ (but not for all~$g \in k[G]$).
+          By using this construction we can form the tensor product of~{\modules{$k[G]$}};
+          this then results in the tensor product of~{\modules{$k[G]$}} as explained in the exercise.
+      \end{itemize}
+  \end{enumerate}
+\end{remark}
+
+
+
+
+
+\subsection{}
+
+
+We denote the given vector space isomorphism by
+\[
+          \Phi
+  \colon  V^\vee \tensor W
+  \to     \Hom_k(V,W) \,.
+\]
+It then holds for every~$g \in G$ an every simple tensor~$\varphi \tensor w \in V^\vee \tensor W$ that
+\[
+    \Phi(g.(\varphi \tensor w))(v)
+  = (g.\varphi)(v) \cdot (g.w)
+  = \varphi(g^{-1}.v) \cdot (g.w)
+  = g.(\varphi(g^{-1}.v) \cdot w)
+  = (g.\Phi(\varphi \tensor w))(v)
+\]
+for all~$v \in V$, and therefore
+\[
+    \Phi(g.(\varphi \tensor w))
+  = g.\Phi(\varphi \tensor w) \,.
+\]
+It follows that
+\[
+    \Phi(g.x)
+  = g.\Phi(x)
+\]
+for all~$g \in G$ and~$x \in V^\vee \tensor W$ because every tensor~$x \in V^\vee \tensor W$ is a sum of simple tensors.
+
+
+
+
+
+\subsection{}
+
+If~$W$ is any subspace of~$V$ then~$\bigoplus_{n=0}^\infty (W \cap V_n)$ is a again a subrepresentation of~$V$ because~$c \in k^\times$ acts on~$W \cap V_n$ by multiplication with the scalar~$c^n$.
+If~$W = \bigoplus_{n=0}^\infty (W \cap V_n)$ then it follows that~$W$ is a subrepresentation.
+
+Suppose on the other hand that~$W$ is a subrepresentation.
+We need to show that for~$w \in W$ with~$w = \sum_{n=0}^\infty w_n$, where~$w_n \in V_n$, that the summands~$w_n$ are already contained in~$W$.
+We have that~$w_n = 0$ for all but finitely many~$n$, and hence~$w = w_0 + \dotsb + w_m$ for~$m$ sufficiently large.
+We can now proceed in (at least) two ways:
+\begin{itemize}
+  \item
+    It holds for every~$c \in k^\times$ that
+    \[
+          c.w
+      =   c.(w_0 + \dotsb + w_m)
+      =   w_0 + c w_1 + c^2 w_2 + \dotsb + c^m w_m
+    \]
+    is again contained in~$W$.
+    We then have that
+    \begin{equation}
+      \label{vandermonde}
+      \begin{bmatrix}
+        1       & c_0     & \cdots  & c_0^m   \\
+        \vdots  & \vdots  & \ddots  & \vdots  \\
+        1       & c_m     & \cdots  & c_m^m
+      \end{bmatrix}
+      \vect{w_0 \\ \vdots \\ w_m}
+      =
+      \vect{c_0.w \\ \vdots \\ c_m.w}
+    \end{equation}
+    for all scalars~$c_0, \dotsc, c_m \in k^\times$.
+    The determinant of the Vandermonde matrix
+    \[
+        V
+      = \begin{bmatrix}
+          1       & c_0     & \cdots  & c_0^m   \\
+          \vdots  & \vdots  & \ddots  & \vdots  \\
+          1       & c_m     & \cdots  & c_m^m
+        \end{bmatrix}
+    \]
+    is given by
+    \[
+            \det(V)
+      =     \prod_{i > j} (c_i - c_j)
+      \neq  0 \,.
+    \]
+    We can choose~$c_0, \dotsc, c_m$ to be pairwise different because~$k$ is invertible, which then makes~$V$ invertible.
+    We can therefore reverse~\eqref{vandermonde} to find that
+    \[
+        V^{-1}
+        \vect{c_0.w_0 \\ \vdots \\ c_m.w_m}
+      = \vect{w_0 \\ \vdots \\ w_m}
+    \]
+    This shows that~$w_0, \dotsc, w_m$ can be expressed as linear combinations of the vectors~$c_0.w, \dotsc, c_m.w$, all of which are again contained in the subrepresentation~$W$.
+    This shows that~$w_0, \dotsc, w_m$ are contained in~$W$.
+  \item
+    We show that~$w_0, \dotsc, w_m \in W$ by induction on~$m$.
+    If~$m = 0$ then~$w = w_0$ and hence~$w_0 \in W$.
+    
+    For general~$m$ we note that the vector
+    \begin{align*}
+       {}&  c^m w - c.w \\
+      ={}&  (c^n w_0 + c^n w_1 + \dotsb + c^m w_m) - (w_0 + c w_1 + \dotsb + c^m w_m) \\
+      ={}&  (c^m - 1) w_0 + (c^m - c) w_1 + \dotsb + (c^m - c^{m-1}) w_{m-1}
+    \end{align*}
+    is again contained in~$W$ for every~$c \in k^\times$.
+    There now exist some scalar~$c \in k^\times$ with~$c^m \neq 1, c, \dots, c^{m-1}$ (because otherwise every element~$c \in k^\times$ would be a~\dash{$j$}{th} root of unity for some~$j = 1, \dotsc, m-1$, but there are only finitely many such roots).
+    It then follows by induction hypothesis that
+    \begin{gather*}
+      (c^m - 1) w_0, \dotsc, (c^m - c^{m-1}) w_{m-1} \in W
+    \shortintertext{and therefore}
+      w_0, \dotsc, w_{m-1} \in W
+    \end{gather*}
+    because~$c^m - 1, \dotsc, c^m - c^{m-1} \neq 0$.
+    It then also follows that
+    \[
+          w_m
+      =   w - w_0 - \dotsb - w_{m-1}
+      \in W \,.
+    \]
+\end{itemize}
+
+
+
+
