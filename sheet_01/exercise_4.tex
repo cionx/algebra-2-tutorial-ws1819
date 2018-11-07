@@ -3,13 +3,28 @@
 Before we begin with the exercise itself, we recall some group theory:
 
 Let~$G$ be a group and let~$H \subseteq G$ be a subgroup.
-Then~$G$ acts on the set of left cosets~$X \defined G/H = \{ gH \suchthat g \in G\}$ via
+Then~$G$ acts on the set of left cosets~$X \defined G/H = \{ gH \suchthat g \in G\}$ via left multiplication, i.e.\ via
 \[
     g \cdot (g' H)
   = (g g') H
 \]
 for all~$g \in G$ and~$g'H \in X$.
-This action of~$G$ on~$X$ is transitive and the stabilizer of~$H = 1H \in X$ is given by~$\Stab_G(H) = H$.
+This action of~$G$ on~$X$ is transitive and the stabilizer of~$H = 1H \in X$ is given by
+\[
+    \Stab_G(H)
+  = \{
+      g \in G
+    \suchthat
+      gH = H
+    \}
+  \underset{1 \in H}{\longequal}
+    \{
+      g \in G
+    \suchthat
+      g \in H
+    \}
+  = H \,.
+\]
 Moreover, the map
 \[
           G
@@ -32,18 +47,36 @@ The Orbit-Stabilizer theorem asserts that every transitive~\dash{$G$}{set} looks
   is both bijective and~\dash{$G$}{equivariant}, i.e.\ it is an isomorphism of~\dash{$G$}{sets}.
 \end{theorem}
 
-The Orbit-Stabilizer theorem asserts that if we want for some group~$G$, subgroup~$H \subseteq G$ and set~$X$ construct a bijection~$G/H \to X$, then we need to construct a transitive action of~$G$ on~$X$ such that~$H$ is the stabilizer of some point~$x \in X$.
+\begin{remark}
+  The Orbit-Stabilizer theorem is a version of the first isomorphism theorem for~\dash{$G$}{sets}.
+\end{remark}
+
+
+The Orbit-Stabilizer theorem asserts that if we want to construct a bijection
+\[
+  G/H \to X
+\]
+for some group~$G$, subgroup~$H \subseteq G$ and set~$X$, then we need to construct a transitive action of~$G$ on~$X$ such that~$H$ is the stabilizer of some point~$x \in X$.
 
 \begin{example}[Topology]
   The group~$\SO(n+1)$ acts on the sphere~$\sphere^n$ by rotation.
-  This action is transitive, and the stabilizer of~$e_1 \in \sphere^n$ is given by~$\SO(n)$, when regarded as a subgroup of~$\SO(n+1)$.
+  This action is transitive, and the stabilizer of~$e_1 \in \sphere^n$ is given by~$\SO(n)$, when regarded as a subgroup of~$\SO(n+1)$ via the embedding
+  \[
+            A
+    \mapsto \begin{bmatrix}
+              1 & 0 \\
+              0 & A
+            \end{bmatrix} \,.
+  \]
   It hence follows from the Orbit-Stabilizer theorem that
   \[
-          \SO(n+1)/\SO(n)
-    \cong \sphere^n
+                    \SO(n+1)/\SO(n)
+    \xlongto{\cong} \sphere^n \,,
+    \quad           A \SO(n)
+    \mapsto         A e_1
   \]
-  as~\dash{$\SO(n+1)$}{sets}.
-  (It follows from~$\SO(n+1)$ being compact and~$\sphere^n$ being Hausdorff that this is already a homeomorphism.)
+  is an isomorphism of~\dash{$\SO(n+1)$}{sets}.
+  (It follows from~$\SO(n+1)$ being compact and~$\sphere^n$ being Hausdorff that this continuous bijection is already a homeomorphism.)
 \end{example}
 
 
@@ -55,7 +88,7 @@ The Orbit-Stabilizer theorem asserts that if we want for some group~$G$, subgrou
 We consider the action of~$G = \GL_n(k)$ on the set~$X$ of flags in~$k^n$ via
 \[
     g . (F_i)_{i=0}^n
-  = ( gF_i )_{i=0}^n
+  = ( gF_i )_{i=0}^n \,,
 \]
 where for every subspace~$U \subseteq k^n$ and every~$g \in G$ the subspace~$gU \subseteq k^n$ is given by
 \[
@@ -77,7 +110,7 @@ for every~$(F_i)_{i=0}^n \in X$, and
 \]
 for all~$g, h \in G$ and all~$(F_i)_{i=0}^n \in X$.
 
-We now consider the standard flag~$S \in X$ given by
+We now consider the standard flag~$S = (S_i)_{i=0}^n \in X$ given by
 \[
             S_i
   \defined  \gen{e_1, \dotsc, e_i}_k
@@ -111,8 +144,8 @@ which shows that
   = B \,.
 \]
 
-We have that~$G.S = X$:
-There exists for every flag~$(F_i)_{i=0}^n \in X$ a basis~$b_1, \dotsc, b_n$ of~$k^n$ such that~$b_1, \dotsc, b_i$ is for every~$i = 0, \dotsc, n$ a basis of~$F_i$.
+We have~$G.S = X$:
+There exists by extension of bases for every flag~$(F_i)_{i=0}^n \in X$ a basis~$b_1, \dotsc, b_n$ of~$k^n$ such that~$b_1, \dotsc, b_i$ is for every~$i = 0, \dotsc, n$ a basis of~$F_i$.
 The matrix~$g = (b_1, \dotsc, b_n)$ (i.e.\ the matrix whose columns are the basis vectors~$b_1, \dotsc, b_n$) is then invertible with
 \[
     g.S_i
@@ -121,7 +154,7 @@ The matrix~$g = (b_1, \dotsc, b_n)$ (i.e.\ the matrix whose columns are the basi
   = \gen{b_1, \dotsc, b_i}_k
   = F_i
 \]
-for every~$i = 0, \dotsc, n$, and hence~$g.S = X$.
+for every~$i = 0, \dotsc, n$, and hence~$g.S = F$.
 
 It now follows from the Orbit-Stabilizer theorem that we have a bijection
 \[
@@ -132,7 +165,7 @@ It now follows from the Orbit-Stabilizer theorem that we have a bijection
   \mapsto g.S
 \]
 which is also~\dash{$G$}{equivariant}.
-The bijection~$\varphi$ assigns to each matrix~$g \in G$ with columns~$g_1, \dotsc, g_n$ the flag~$g.S = (F_i)_{i=0}^n$ with~$F_i = \gen{g_1, \dotsc, g_i}_k$ for every~$i = 0, \dotsc, n$.
+The bijection~$\varphi$ assigns to each matrix~$g \in G$ with columns~$g_1, \dotsc, g_n$ the flag~$g.S = (F_i)_{i=0}^n$ with~$F_i = \gen{g_1, \dotsc, g_i}_k$ for every~$i = 0, \dotsc, n$, i.e.\ the flag spanned by the columns of~$g$ (from left to right).
 
 
 
@@ -140,10 +173,10 @@ The bijection~$\varphi$ assigns to each matrix~$g \in G$ with columns~$g_1, \dot
 
 \subsection{}
 
-The bijection~$\varphi$ is a~\dash{$G$}{equivariant}, and therefore also~$B$ equivariant, and thus induces a bijection
+The bijection~$\varphi$ is a~\dash{$G$}{equivariant}, and therefore also~\dash{$B$}{equivariant}, and thus induces a bijection
 \[
-          \{\text{$B$ orbits in~$G/B$}\}
-  \longto \{\text{$B$ orbits in~$X$}\} \,.
+          \{\text{\dash{$B$}{orbits} in~$G/B$}\}
+  \longto \{\text{\dash{$B$}{orbits} in~$X$}\} \,.
 \]
 In the case~$n = 2$ every flag~$(F_i)_{i=0}^2 \in X$ is uniquely determined by its middle term~$F_1$ (because~$F_0 = 0$ and~$F_2 = k^2$), which is an arbitrary \dash{one}{dimensional} subspace of~$k^2$.
 We thus have a bijection
@@ -158,8 +191,8 @@ We thus have a bijection
 and this bijection is~\dash{$G$}{equivariant}, and hence also~\dash{$B$}{equivariant}.
 We therefore get another induced bijection
 \[
-          \{\text{$B$ orbits in~$X$}\}
-  \longto \{\text{$B$ orbits in~$X'$}\} \,.
+          \{\text{\dash{$B$}{orbits} in~$X$}\}
+  \longto \{\text{\dash{$B$}{orbits} in~$X'$}\} \,.
 \]
 Suppose now that~$L \in X'$ is a \dash{one}{dimensional} subspace of~$k^2$.
 Then~$L$ is spanned by a single nonzero vector
@@ -178,12 +211,12 @@ For~$h \in B$ with~$h = \begin{bsmallmatrix} a & b \\ {} & c \end{bsmallmatrix}$
   =
   \vect{ax + by \\ cy} \,.
 \end{equation}
-We can now distinguish between two cases:
+We can now distinguish between two (non-exclusive) cases:
 \begin{itemize}
   \item
-    If~$y \neq 0$ then we can choose ~$c = 1/y$,~$a = 1$ and~$b = -x/y$ to find that the~\dash{$B$}{orbit} of~$L$ contains the line~$\gen{e_1}$.
+    If~$y \neq 0$ then we can choose ~$c = 1/y$,~$a = 1$ and~$b = -x/y$ to find that the~\dash{$B$}{orbit} of~$L$ contains the line~$\gen{e_2}$.
   \item
-    If~$y = 0$ then~$x \neq 0$ and we can choose~$c = 1$,~$a = 1/x$ and~$b = 0$ to find that the~\dash{$B$}{orbit} of~$L$ contains the line~$\gen{e_2}$.
+    If~$y = 0$ then~$x \neq 0$ and we can choose~$c = 1$,~$a = 1/x$ and~$b = 0$ to find that the~\dash{$B$}{orbit} of~$L$ contains the line~$\gen{e_1}$.
 \end{itemize}
 If follows from~\eqref{action of triangle on vector} that the~\dash{$B$}{orbit} of~$\gen{e_2}$ does not contain any line~$L'$ with~$e_1 \in L'$ (because it follows from~$c, y \neq 0$ that~$cy \neq 0$).
 Hence the lines~$\gen{e_1}$ and~$\gen{e_2}$ are not in the same~\dash{$B$}{orbit}.
@@ -191,8 +224,7 @@ Hence the lines~$\gen{e_1}$ and~$\gen{e_2}$ are not in the same~\dash{$B$}{orbit
 This shows altogether that~$\gen{e_1}$ and~$\gen{e_2}$ form a set of representatives for the~\dash{$B$}{orbits} on~$X'$.
 This shows that there exist precisely two~\dash{$B$}{orbits} on~$X'$, and hence two~\dash{$B$}{orbits} on~$X$.
 The two orbits have as a set of representatives the two flags
-\begin{equation}
-  \label{flag representatives}
+\[
             0
   \subseteq \gen{e_1}
   \subseteq k^2 \,,
@@ -200,7 +232,7 @@ The two orbits have as a set of representatives the two flags
             0
   \subseteq \gen{e_2}
   \subseteq k^2 \,.
-\end{equation}
+\]
 
 
 
@@ -208,8 +240,8 @@ The two orbits have as a set of representatives the two flags
 
 \subsection{}
 
-It holds for every~$h \in B$ that~$h.\gen{e_1} = \gen{e_1}$.
-The orbit of the flag~$F^1 = (0 \subseteq \gen{e_1} \subseteq k^2)$ consists therefore of only~$F^1$ itself.
+It holds for every~$h \in B$ that~$h.\gen{e_2} = \gen{e_2}$.
+The \dash{$B$}{orbit} of the flag~$F^2 = (0 \subseteq \gen{e_2} \subseteq k^2)$ consists therefore of only~$F^2$ itself.
 It follows from
 \[
     |X|
@@ -219,7 +251,7 @@ It follows from
   = \frac{q(q+1)(q-1)^2}{(q-1)^2 q}
   = q+1
 \]
-that the other orbit, namely the one of~$F^2 = (0 \subseteq \gen{e_2} \subseteq k^2)$, consists of~$q$ elements.
+that the other orbit, namely the one of~$F^1 = (0 \subseteq \gen{e_1} \subseteq k^2)$, consists of~$q$ elements.
 
 
 
@@ -228,7 +260,7 @@ that the other orbit, namely the one of~$F^2 = (0 \subseteq \gen{e_2} \subseteq 
 \subsection{}
 
 The group~$B$ acts on~$G$ from the left by left multiplication, and from the right by right multiplication.
-The space~$H_q$ consists of all functions~$f \colon G \to \Complex$ which are both left invariant and right invariant under these actions of~$B$.
+The space~$H_q$ consists of all functions~$f \colon G \to \Complex$ which are both left invariant and right invariant under these actions of~$B$ on~$G$.
 These are precisely those functions~$f \colon G \to \Complex$ which are constants on the double cosets
 \[
     BgB
@@ -236,19 +268,30 @@ These are precisely those functions~$f \colon G \to \Complex$ which are constant
       b_1 g b_2
     \suchthat
       b_1, b_2 \in B
-    \}
+    \} \,,
 \]
-for~$g \in G$.
-For the set of double cosets
+where~$g \in G$.
+If we denote the set of such double cosets by
 \[
     B \backslash G / B
   = \{
       B g B
     \suchthat
       g \in G
-    \}
+    \} \,,
 \]
-a basis of~$H_q$ is therefore given by the characteristic functions~$I_D$ of the double cosets~$D \in B \backslash G / B$.
+then a basis of~$H_q$ is therefore given by the characteristic functions~$I_D$ of the double cosets~$D \in B \backslash G / B$;
+the characteristic function~$I_D$ is given by
+\[
+          I_D
+  \colon  G
+  \to     \Complex \,,
+  \quad   g
+  \mapsto \begin{cases}
+            1 & \text{if~$g \in D$} \,, \\
+            0 & \text{if~$g \notin D$}  \,.
+          \end{cases}
+\]
 We can determine~$B \backslash G / B$ with the following lemma:
 
 \begin{lemma}
@@ -273,7 +316,7 @@ We can determine~$B \backslash G / B$ with the following lemma:
     \quad   g
     \mapsto H g K \,.
   \]
-  It holds for all~$g \in g$ an~$k \in K$ that
+  It holds for all~$g \in G$ and~$k \in K$ that
   \[
       \varphi''(g \cdot k)
     = H g k K
@@ -284,7 +327,7 @@ We can determine~$B \backslash G / B$ with the following lemma:
   \[
             \varphi'
     \colon  G / K
-    \to     H \backslash G / K
+    \to     H \backslash G / K  \,,
     \quad   gK
     \mapsto H g K \,.
   \]
@@ -299,7 +342,7 @@ We can determine~$B \backslash G / B$ with the following lemma:
   \[
             \varphi
     \colon  H \backslash (G / K)
-    \to     H \backslash G / K
+    \to     H \backslash G / K  \,,
     \quad   H(gK)
     \mapsto H g K \,.
   \]
@@ -315,13 +358,11 @@ We can determine~$B \backslash G / B$ with the following lemma:
   \[
       \psi'(h \cdot g \cdot k)
     = H((hgk)K)
-    = H(hgkK)
-    = H(hgK)
-    = (Hh)(gK)
+    = (Hh)g(kK)
     = HgK
     = \psi'(g)  \,,
   \]
-  and therefore descends to a {\welldef} map
+  for all~$h \in H$,~$k \in K$ and~$g \in G$, and therefore descends to a {\welldef} map
   \[
             \psi'
     \colon  H \backslash G / K
@@ -329,17 +370,17 @@ We can determine~$B \backslash G / B$ with the following lemma:
     \quad   KgK
     \mapsto H(gK) \,.
   \]
-  The maps~$\varphi$ and~$\psi$ are inverse to each other, which shows that~$\varphi$ is a bijection.
+  The maps~$\varphi$ and~$\psi$ are mutually inverse, which shows that~$\varphi$ is a bijection with inverse~$\varphi^{-1} = \psi$.
 \end{proof}
 
 
 We have already seen that~$B \backslash (G / B)$ has (for~$n = 2$) precisely two elements.
 It follows from \cref{double cosets} that~$B \backslash G / B$ has precisely two elements.
-One of those is $B 1 B = B$, the other one is the complement~$B' \defined G \smallsetminus B$ (because~$G$ is the disjoint union of the double cosets in~$B \backslash G / B$).
+One of these double cosets is $B 1 B = B$, and the other one is necessarily the complement~$B' \defined G \smallsetminus B$ (because~$G$ is the disjoint union of the double cosets in~$B \backslash G / B$).
 
 The space~$H_q$ has therefore two basis elements, namely the characteristic functions~$I_B$ and~$I_{B'}$.
 
-To determine the algebra structure on~$H_q$ we first check that the given multiplication is both {\welldef} and associative.
+Before we further determine the algebra structure on~$H_q$ we first check that the given multiplication is both {\welldef} and associative.
 
 We have for all~$f_1, f_2 \in H_q$ that
 \begin{align*}
@@ -358,16 +399,16 @@ and
   = \frac{1}{\card{B}} \sum_{y \in G} f_1(y) f_2(y^{-1} g)
   = (f_1 \cdot f_2)(g)
 \]
-for all~$g \in G$ and~$b u/n B$, which shows that again~$f_1 \cdot f_2 \in H_q$.
-To show that the multiplication is associative we first note that for~$f_1 \cdot f_2 \in H_q$ the product can also be written as
+for all~$g \in G$ and~$b \in B$, which shows that again~$f_1 \cdot f_2 \in H_q$.
+To show that the multiplication is associative we first note that for any two functions~$f_1, f_2 \in H_q$ their product~$f_1 \cdot f_2$ can also be written as
 \[
-    (f_1 \cdot fv2)(g)
-  = \frac{1}{\card{B}} \sum_{y \in G} f_1(y) f_2(y^{-1} b g)
+    (f_1 \cdot f_2)(g)
+  = \frac{1}{\card{B}} \sum_{y \in G} f_1(y) f_2(y^{-1} g)
   = \frac{1}{\card{B}} \sum_{\substack{y, y' \in G \\ y y' = g}} f_1(y) f_2(y') \,.
 \]
 With this we find for all~$f_1, f_2, f_3 \in H_q$ that
 \begin{align*}
-      (f_1 \cdot (f_2 \cdot f_3)(g)
+      (f_1 \cdot (f_2 \cdot f_3))(g)
   &=  \frac{1}{\card{B}}
       \sum_{\substack{y, y' \in G \\ y y' = g}}
       f_1(y) (f_2 \cdot f_3)(y')  \\
@@ -378,8 +419,9 @@ With this we find for all~$f_1, f_2, f_3 \in H_q$ that
       f_2(y'') f_3(y''')  \\
   &=  \frac{1}{\card{B}^2}
       \sum_{\substack{y, y', y'' \in G \\ y y' y'' = g}}
-      f_1(y) f_2(y') f_3(y'') \,.
+      f_1(y) f_2(y') f_3(y'')
 \end{align*}
+for every~$g \in G$.
 We also find in the same way that
 \[
     ((f_1 \cdot f_2) \cdot f_3)(g)
@@ -387,7 +429,7 @@ We also find in the same way that
     \sum_{\substack{y, y', y'' \in G \\ y y' y'' = g}}
     f_1(y) f_2(y') f_3(y'') \,,
 \]
-which then shows that~$f_1 \cdot (f_2 \cdot f_3) = (f_1 \cdot f_2) \cdot f_3$.
+for every~$g \in G$, which then shows that~$f_1 \cdot (f_2 \cdot f_3) = (f_1 \cdot f_2) \cdot f_3$.
 
 We now show that
 \begin{align*}
@@ -396,14 +438,14 @@ We now show that
   I_{B'} \cdot I_B    &=  I_{B'} \,,  \\
   I_{B'} \cdot I_{B'} &=  q I_B + (q-1) I_{B'} \,.
 \end{align*}
-With this we have achieved the following things:
+With this we have then achieved the following things:
 \begin{itemize}
   \item
-    This describes the multiplication of~$H_q$ in terms of the given basis of~$H_q$.
+    We have describes the multiplication of~$H_q$ in terms of the given basis of~$H_q$.
   \item
-    It shows that~$I_B$ is the multiplicative neutral element for~$H_q$.
+    We have shown that~$I_B$ is the multiplicative neutral element for~$H_q$.
   \item
-    We see that for~$q = 1$ we get the group algebra~$\Complex[\Integer/2]$.
+    We see that for~\enquote{$q = 1$} we get the group algebra~$\Complex[\Integer/2]$.
 \end{itemize}
 
 Indeed, it holds for every~$f \in H_q$ that
@@ -421,7 +463,7 @@ Indeed, it holds for every~$f \in H_q$ that
    =  \frac{\card{B}}{\card{B}} f(g)
    =  f(g)
 \end{align*}
-and similarly that
+for every~$g \in G$, and similarly that
 \begin{align*}
       (f \cdot I_B)(g)
   &=  \frac{1}{\card{B}}
@@ -434,17 +476,16 @@ and similarly that
       \sum_{y \in G}
       f(gy) I_B(y^{-1})
    =  \frac{1}{\card{B}}
-      \sum_{y \in G}
-      f(gy^{-1}) I_B(y) \\
-  &=  \frac{1}{\card{B}}
       \sum_{b \in B}
-      f(gb)
-   =  \frac{1}{\card{B}}
+      f(gb) \\
+   &= \frac{1}{\card{B}}
       \sum_{b \in B}
       f(g)
    =  \frac{\card{B}}{\card{B}} f(g)
-   =  f(g) \,.
+   =  f(g)
 \end{align*}
+for every~$g \in G$.
+This shows that~$I_B \cdot f = f = f \cdot I_B$ for every~$f \in H_q$.
 We have for every~$b \in B$ that
 \begin{align}
       (I_{B'} \cdot I_{B'})(b)
@@ -476,6 +517,8 @@ and we use for~\eqref{counting quotient} that
   = q \,.
 \]
 Lastly, we have for~$b' \in B'$ that
+\begingroup
+\allowdisplaybreaks
 \begin{align}
       (I_{B'} \cdot I_{B'})(b')
   &=  \frac{1}{\card{B}}
@@ -493,6 +536,7 @@ Lastly, we have for~$b' \in B'$ that
   &=  \frac{\card{B'}}{\card{B}} - 1  \notag  \\
   &=  q - 1 \notag  \,,
 \end{align}
+\endgroup
 where use for~\eqref{change sum} that
 \[
         b''^{-1} b' \notin  B
@@ -508,11 +552,33 @@ and use for~\eqref{difference} that~$b' B \subseteq B'$ because~$b' \notin B$.
       B \backslash G / B
     = \coprod_{\sigma \in S_n} B P_\sigma B \,,
   \]
-  where~$P_\sigma$ is the permutation matrix associated to~$\sigma \in S_n$.
-  This decomposition is known as the \emph{Bruhat decomposition} of~$\GL_n(k)$, and can be seen as a version of the Gauß algorithm.
+  where~$P_\sigma$ is the permutation matrix associated to the permutation~$\sigma \in S_n$.
+  This decomposition is known as the \emph{Bruhat decomposition} of~$\GL_n(k)$, and can be seen (an proven) as a version of the Gauß algorithm.
   
-  This then shows that~$H_q$ has a basis indexed by the symmetric group~$S_n$.
-  The algebra~$H_q$ is known as the \emph{Hecke algebra} of~$S_n$, and can be seen as the deformation of the groups algebra~$\Complex[S_n]$ along a parameter~$q$.
+  This then shows that~$H_q$ has for every~$n$ a basis indexed by the symmetric group~$S_n$.
+  The algebra~$H_q$ is known as the \emph{Iwahori--Hecke algebra} of~$S_n$, and can be seen as the deformation of the groups algebra~$\Complex[S_n]$ along a parameter~$q$.
+  
+  One can more generally define the Iwahori--Hecke algebra of~$S_n$ fo every parameter~$q \in \Complex^\times$:
+  Recall that the symmetric groups~$S_n$ is can be described by generators~$t_1, \dotsc, t_{n-1}$ (which represent the simple transpositions~$t_i = (i,i+1)$) and the relations
+  \begin{enumerate}[label=(R\arabic*)]
+    \item
+      $t_i^2 = 1$ for all~$i = 1, \dotsc, n-1$,
+    \item
+      $t_i t_j = t_j t_i$ for all~$i, j = 1, \dotsc, n$ with~$\abs{i-j} \geq 2$,
+    \item
+      $t_i t_{i+1} t_i = t_{i+1} t_i t_{i+1}$ for all~$i = 1, \dotsc, n-2$.
+  \end{enumerate}
+  (The last two relations are known as the \emph{braid relations}.)
+  We can now define the Iwahori--Hecke algebra~$H_q$ for~$q \in \Complex^\times$ as the algebra given by generators~$T_1, \dotsc, T_{n-1}$ and relations
+  \begin{enumerate}[label=(IH\arabic*)]
+    \item
+      $T_i^2 = (q-1) T_i + q$ for all~$i = 1, \dotsc, n-1$,
+    \item
+      $T_i T_j = T_j T_i$ for all~$i, j = 1, \dotsc, n$ with~$\abs{i-j} \geq 2$,
+    \item
+      $T_i T_{i+1} T_i = T_{i+1} T_i T_{i+1}$ for all~$i = 1, \dotsc, n-2$.
+  \end{enumerate}
+  For~$q = 1$ this then gives back the group algebra~$\Complex[S_n]$.
 \end{remark}
 
 
