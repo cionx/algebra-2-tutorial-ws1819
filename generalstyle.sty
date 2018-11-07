@@ -28,6 +28,7 @@
 \setkomafont{publishers}{\normalsize}
 
 % settings for list like environments
+\setlist[description, 1]{leftmargin=\labelwidth, font=\normalfont}
 \setlist[enumerate, 1]{leftmargin=*, align=left, label=\arabic*)}
 \setlist[itemize, 1]{leftmargin=*}
 \setlist[itemize, 2]{leftmargin=*, label={\textopenbullet}}
@@ -47,6 +48,7 @@
 \newtheorem{proposition}[everything]{Proposition}
 \newtheorem{remark}[everything]{Remark}
 \newtheorem{theorem}[everything]{Theorem}
+\newtheorem{warning}[everything]{Warning}
 
 
 % text shortcuts
@@ -58,6 +60,7 @@
 \newcommand{\kbil}{$k$\nobreakdash-bilinear}
 \newcommand{\klin}{$k$\nobreakdash-linear}
 \newcommand{\kvs}{$k$\nobreakdash-vector space}
+\newcommand{\onetoone}{one\nobreakdash-to\nobreakdash-one}
 \newcommand{\twosided}{two\nobreakdash-sided}
 \newcommand{\welldef}{well\nobreakdash-defined}
 \NewDocumentCommand{\module}{m o}{%
@@ -79,6 +82,8 @@
 
 
 % math shortcuts
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\inclusion}{\hookrightarrow}
 \newcommand{\longto}{\longrightarrow}
 \newcommand{\vect}[1]{\begin{bmatrix} #1 \end{bmatrix}}
 \newcommand{\xlongto}{\xlongrightarrow}
@@ -98,9 +103,27 @@
 \newcommand{\Complex}{\mathbb{C}}
 
 
+% categories
+% generic macros
+\newcommand{\catname}[1]{\mathbf{#1}}
+\newcommand{\gencat}[1]{\mathcal{#1}}
+% fixed categories
+\newcommand{\kAlg}{\text{$k$-$\catname{Alg}$}}
+\newcommand{\kCommAlg}{\text{$k$-$\catname{CommAlg}$}}
+\newcommand{\Set}{\catname{Set}}
+% generaic categories
+\newcommand{\Ccat}{\gencat{C}}
+\newcommand{\Dcat}{\gencat{D}}
+\newcommand{\Ecat}{\gencat{E}}
+\newcommand{\Fcat}{\gencat{F}}
+\newcommand{\Gcat}{\gencat{G}}
+
+
 % space and set constructions
 \DeclareMathOperator{\End}{End}
+\newcommand{\Exterior}{\bigwedge}
 \DeclarePairedDelimiter{\gen}{\langle}{\rangle}
+\DeclarePairedDelimiter{\genideal}{(}{)}
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\Hom}{Hom}
 \newcommand{\mat}[2]{\operatorname{M}_{#1}(#2)}
@@ -108,6 +131,8 @@
 \DeclareMathOperator{\SO}{SO}
 \newcommand{\sphere}{\mathbb{S}}
 \DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Symm}{S}
+\DeclareMathOperator{\Tensor}{T}
 
 
 % functions and functors
@@ -115,6 +140,11 @@
 \newcommand{\id}{\operatorname{id}}
 \newcommand{\Id}{\mathbbm{1}}
 \DeclareMathOperator{\ringchar}{char}
+
+
+% decoration
+\newcommand{\class}[1]{\overline{#1}}
+\newcommand{\induced}[1]{\overline{#1}}
 
 
 % custom macros with case distinctions
