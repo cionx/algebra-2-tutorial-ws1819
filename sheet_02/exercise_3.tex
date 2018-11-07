@@ -1,1 +1,554 @@
-\addtocounter{section}{1}
+\section{}
+
+
+
+
+
+\subsection{}
+\label{grading on tensor algebra}
+
+We already know that~$\Tensor(V)$ is a~{\kalg} with a decomposition~$T(V) = \bigoplus_{d \geq 0} V^{\tensor d}$ into linear subspaces.
+It remains to show that this decomposition gives a grading on~$T(V)$, i.e.\ that for holds for all~$x \in V^{\tensor d}$ and~$x' \in V^{\tensor d'}$ that~$x x' \in V^{\tensor (d + d')}$.
+For this we may assume that~$x$ and~$x'$ are simple tensors
+\[
+    x
+  = v_1 \tensor \dotsb \tensor v_d
+  \quad\text{and}\quad
+    x'
+  = v'_1 \tensor \dotsb \tensor v'_{d'} \,.
+\]
+Then
+\begin{align*}
+      x x'
+  &=  (v_1 \tensor \dotsb \tensor v_d) (v'_1 \tensor \dotsb \tensor v'_{d'})  \\
+  &=  v_1 \tensor \dotsb \tensor v_d \tensor v'_1 \tensor \dotsb \tensor v'_{d'}
+  \in V^{\tensor (d + d')} \,.
+\end{align*}
+
+
+\begin{remark}
+  We find in the same same way as for the tensor algebra~$\Tensor(V)$ that both the symmetric algebra~$\Symm(V) = \bigoplus_{d \geq 0} \Symm^d(V)$ and the exterior algebra~$\Exterior(V) = \bigoplus_{d \geq 0} \Exterior^d(V)$ are graded~{\kalgs}.
+\end{remark}
+
+
+
+
+
+\subsection{}
+
+% We recall the following universal properties from (linear) algebra:
+% 
+% \begin{itemize}
+%   \item
+%     The universal property of the tensor algebra~$\Tensor(V)$:
+%     
+%     If~$V$ is a~{\kvs} then the inclusion
+%     \[
+%                   \iota
+%       \colon      V
+%       =           V^{\tensor 1}
+%       \inclusion  \Tensor(V) \,,
+%     \]
+%     is a~{\klin} map, and for every other~{\kalg}~$A$ and every~{\klin} map~$f \colon V \to A$ there exists a unique homomorphism of~{\kalg}~$F \colon \Tensor(V) \to A$ which extends~$f$ along~$\iota$, i.e.\ which makes the triangle
+%     \[
+%       \begin{tikzcd}[sep = large]
+%           \Tensor(V)
+%           \arrow[dashed]{r}[above]{F}
+%         & A
+%         \\
+%           V
+%           \arrow{u}[left]{\iota}
+%           \arrow{ur}[below right]{f}
+%         & {}
+%       \end{tikzcd}
+%     \]
+%     commute.
+%     The algebra homorphism~$F$ is on simple tensors given by
+%     \[
+%         F(v_1 \tensor \dotsb \tensor v_d)
+%       = f(v_1) \dotsm f(v_d)
+%     \]
+%     for all~$v_1, \dotsc, v_d \in V$.
+%     This constructions results in a {\onetoone} correspondence
+%     \[
+%         \{ \text{algebra homomorphisms~$F \colon \Tensor(V) \to A$} \}
+%       \longleftrightarrow
+%         \{ \text{linear maps~$f \colon V \to A$} \} \,.
+%     \]
+%     (This means in fancy language that~$\Tensor \colon k\text{-}\mathbf{Vect} \to k\text{-}\mathbf{Alg}$ is left adjoint to the forgetful functor~$k\text{-}\mathbf{Alg} \to k\text{-}\mathbf{Vect}$.
+%     The inclusion~$\iota \colon V \to \Tensor(V)$ is the unit of this adjunction.)
+%   \item
+%     The universal property of the symmetric algebra~$\Symm(V)$:
+%     
+%     If~$V$ is a~{\kvs}, then the inclusion
+%     \[
+%                   \iota
+%       \colon      V
+%       =           \Symm^1(V)
+%       \inclusion  \Symm(V)
+%     \]
+%     is a~{\klin} map, and for every other commutative~{\kalg}~$C$ and every~{\klin} map~$f \colon V \to C$ there exists a unique homomorphism of~{\kalgs}~$F \colon \Symm(V) \to C$ which extends~$f$ along~$\iota$, i.e.\ which makes the triangle
+%     \[
+%       \begin{tikzcd}[sep = large]
+%           T(V)
+%           \arrow{r}[above]{F}
+%         & C
+%         \\
+%           V
+%           \arrow{u}[left]{\iota}
+%           \arrow{ur}[below right]{f}
+%         & {}
+%       \end{tikzcd}
+%     \]
+%     commute.
+%     The algebra homomorphism~$F$ is on monomials given by
+%     \[
+%         F(v_1 \dotsm v_d)
+%       = f(v_1) \dotsm f(v_d)
+%     \]
+%     for all~$v_1, \dotsc, v_d \in V$.
+%     This constructions results in a {\onetoone} correspondence
+%     \[
+%         \{ \text{algebra homomorphisms~$F \colon \Symm(V) \to C$} \}
+%       \longleftrightarrow
+%         \{ \text{linear maps~$f \colon V \to C$} \} \,.
+%     \]
+%     (This means in fancy language that~$\Symm \colon k\text{-}\mathbf{Vect} \to k\text{-}\mathbf{CommAlg}$ is left adjoint to the forgetful functor~$k\text{-}\mathbf{CommAlg} \to k\text{-}\mathbf{Vect}$.
+%     The inclusion~$\iota \colon V \to \Symm(V)$ is the unit of this adjunction.)
+%   \item
+%     The universal property of the quotient ring~$R/I$:
+%     
+%     If~$R$ is a ring and~$I \subseteq R$ is a {\twosided} ideal, the the canonical projection
+%     \[
+%               \pi
+%       \colon  R
+%       \to     R/I \,,
+%       \quad   r
+%       \mapsto [r]
+%     \]
+%     is a ring homomorphism with~$\ker \pi = I$.
+%     If~$S$ is any other ring and~$f \colon R \to S$ is a ring homomorphism with~$I \subseteq \ker(f)$ then~$f$ factors uniquely through a ring homomorphism~$\bar{f} \colon R/I \to S$, i.e\ the ring homomorphism~$\bar{f}$ makes the triangle
+%     \[
+%       \begin{tikzcd}[sep = large]
+%           R
+%           \arrow{r}[above]{f}
+%           \arrow{d}[left]{\pi}
+%         & S
+%         \\
+%           R/I
+%           \arrow[dashed]{ur}[below right]{\bar{f}}
+%         & {}
+%       \end{tikzcd}
+%     \]
+%     commute.
+%     The ring homomorphism~$\bar{f}$ is given by
+%     \[
+%         \bar{f}([x])
+%       = f(x)
+%     \]
+%     for every~$[x] \in R/I$.
+%     This construction results in a {\onetoone} correspondence
+%     \begin{align*}
+%         &\{ \text{ring homomorphisms~$\bar{f} \colon R/I \to S$} \}
+%       \\
+%       \longleftrightarrow{}
+%         &\{ \text{ring homomorphisms~$f \colon R \to S$ with~$I \subseteq \ker(f)$} \} \,.
+%     \end{align*}
+%   \item
+%     The universal propery of the (commutative) polynomial ring~$k[X_i \suchthat i \in I]$:
+%     
+%     If~$I$ is any (index) set and~$C$ is a commutative (!)~{\kalg}, then there exist for any choice of elements~$c_i \in C$ with~$i \in I$ a unique algebra homomorphism~$F \colon k[X_i \suchthat i \in I] \to C$ with~$f(X_i) = c_i$ for every~$i \in I$.
+%     
+%     This means that for the \enquote{inclusion}
+%     \[
+%               \iota
+%       \colon  I
+%       \to     k[X_i \suchthat i \in I] \,,
+%       \quad   i
+%       \mapsto X_i
+%     \]
+%     every map~$f \colon I \to C$ extends uniquely to a algebra homomorphism~$F \colon k[X_i \suchthat i \in I]$ along~$\iota$, i.e.\ the homomorphism~$F$ makes the triangle
+%     \[
+%       \begin{tikzcd}[sep = large]
+%           k[X_i \suchthat i \in I]
+%           \arrow[dashed]{r}[above]{F}
+%         & C
+%         \\
+%           I
+%           \arrow{u}[left]{\iota}
+%           \arrow{ur}[below right]{f}
+%         & {}
+%       \end{tikzcd}
+%     \]
+%     commute.
+%     The algebra homomorphism~$F$ is given on monomials by
+%     \[
+%         F(X_{i_1}^{n_1} \dotsm X_{i_r}^{n_r})
+%       = f(x_{i_1})^{n_1} \dotsm f(x_{i_r})^{n_r}
+%       = c_{i_1}^{n_1} \dotsm c_{i_r}^{n_r} \,.
+%     \]
+%     This construction results in a {\onetoone} correspondence
+%     \begin{align*}
+%         &\{ \text{algebra homomorphisms~$F \colon k[X_i \suchthat i \in I] \to C$} \} \\
+%       \longleftrightarrow{}
+%         &\{ \text{tupels~$(c_i)_{i \in I}$ with~$c_i \in C$} \} \,.
+%     \end{align*}
+%     (This means in fancy language that the polynomial ring (as a functor) is a left adjoint to the forgetful functor~$k\text{-}\mathbf{CommAlg} \to \mathbf{Set}$.
+%     The map~$i \mapsto X_i$ is the unit of this adjunction.)
+% \end{itemize}
+
+Let~$A$ be a~{\kalg}.
+Then for every two elements~$x, y \in A$ we denote by
+\[
+    [x,y]
+  = xy - yx
+\]
+their \emph{commutator}.
+As a map~$[-,-] \colon A \times A \to A$ the commutator is both {\kbil} and alternating.%
+\footnote{It is in fact a Lie bracket, and the prototypical example of such.}
+We can now consider the {\twosided} ideal~$I$ in~$A$ given by
+\[
+    I
+  = \genideal{ [x,y] \suchthat x, y \in A } \,.
+\]
+The ideal~$I$ is known as the \emph{commutator ideal} of~$A$.
+
+Suppose know that~$A = \bigoplus_{d \geq 0} A_d$ is a graded~{\kalg}.
+If~$x \in A_d$ and~$y \in A_{d'}$ are homogenous elements of~$A$ then their commutator~$[x,y]$ is again homogeneous because
+\[
+      [x,y]
+  =   xy - yx
+  \in A_{d + d'} + A_{d + d'}
+  =   A_{d + d'} \,.
+\]
+It follows that the commutator ideal~$I$ of~$A$ is a homogeneous ideal:
+We have for any two elements~$x, y \in A$ with homogeneous decompositions~$x = \sum_{d \geq 0} x_d$ and~$y = \sum_{d \geq 0} y_d$ that
+\[
+    [x,y]
+  = \left[
+      \sum_{d \geq 0} x_d,
+      \sum_{d \geq 0} y_d
+    \right]
+  = \sum_{d, d' \geq 0} [x_d, y_{d'}]
+\]
+by the bilinearity of the commutator~$[-,-]$.
+Hence we find that the commutator ideal
+\[
+    I
+  = \genideal{ [x,y] \suchthat x, y \in A }
+  = \genideal{ [x', y'] \suchthat d, d' \geq 0, x \in A_d, y \in A_{d'} }
+\]
+is generated by homogeneous elements, and is hence homogeneous.
+It follows that the quotient algebra~$A/I$ inherits a grading from~$A$;
+to be more precise, we have that~$A/I = \bigoplus_{d \geq 0} \pi(A_d)$ where~$\pi \colon A \to A/I$ denotes the canonical projection.
+
+\begin{remark}
+  Let~$A$ be a~{\kalg} and let~$I$ be the commutator ideal of~$A$.
+  Then the quotient algebra~$A/I$ is commutative, and~$I$ is the smallest ideal in~$A$ with this property.
+  Indeed, it holds for any {\twosided} ideal~$J \subseteq A$ that
+  \begin{align*}
+        {}& \text{$A/J$ is commutative} \\
+    \iff{}& \text{$x' y' = y' x'$ for all~$x', y' \in A/J$} \\
+    \iff{}& \text{$\class{x} \, \class{y} = \class{y} \, \class{x}$ for all~$x, y \in A$} \\
+    \iff{}& \text{$\class{xy - yx} = 0$ for all~$x, y \in A$} \\
+    \iff{}& \text{$[x,y] \in J$ for all~$x, y \in A$} \\
+    \iff{}& I \subseteq J \,.
+  \end{align*}
+  It follows (either from this result itself, or from a similiar calculation) that if~$C$ is a commutative~{\kalg} then there exists for every algebra homomorphism~$f \colon A \to C$ a unique algebra homomorphism~$\induced{f} \colon A/I \to C$ which makes the triangle
+  \[
+    \begin{tikzcd}
+        A/I
+        \arrow[dashed]{r}[above]{\induced{f}}
+      & C
+      \\
+        A
+        \arrow{u}
+        \arrow{ur}[below right]{f}
+      & {}
+    \end{tikzcd}
+  \]
+  commute.
+  This gives rise to a {\onetoone} correspondence
+  \begin{align*}
+      {}&\{ \text{algebra homomorphisms~$f \colon A \to C$} \}  \\
+    \longleftrightarrow{}&
+      \{ \text{algebra homomorphisms~$\induced{f} \colon A/I \to C$} \} \,.
+  \end{align*}
+  (We have thus constructed a left adjoint to the forgetful functor~$\kCommAlg \to \kAlg$.
+  The author encourages the reader to compare this construction to the abelianization~$G/[G,G]$ of a group~$G$.)
+  Hence the quotient~$A/I$ is the \enquote{most general way} to make the algebra~$A$ commutative.
+\end{remark}
+
+We now return to the original algebra~$\Tensor(V)$ and its commutator ideal~$I$.
+Thinking about the algebra~$\Tensor(V)$ as the \enquote{most general way of making the vector space~$V$ into a {\kalg}} and about the quotient~$\Tensor(V)/I$ as the \enquote{most general way to make the algebra~$\Tensor(V)$ commutative}, we may guess that the quotient algebra~$\Tensor(V)/I$ should be the \enquote{most general way to make the vector space~$V$ into a commutative~{\kalg}}.
+In this way we see that the quotient algebra~$\Tensor(V)/I$ ought to be the symmetric algebra~$\Symm(V)$.
+
+Indeed, the inclusion~$i \colon V \to \Symm(V)$ is a~{\klin} map and hence induces (by the universal property of the tensor algebra~$\Tensor(V)$) an algebra homomorphism
+\[
+          \tilde{\varphi}
+  \colon  \Tensor(V)
+  \to     \Symm(V)
+\]
+which is given on simple tensors by
+\[
+    \tilde{\varphi}(v_1 \tensor \dotsb \tensor v_n)
+  = v_1 \dotsm v_n \,.
+\]
+It follows from~$\Symm(V)$ being commutative that~$\varphi$ extends to an algebra homomorphism
+\[
+          \varphi
+  \colon  \Tensor(V)/I
+  \to     \Symm(V) \,,
+\]
+which is given by
+\[
+    \varphi( \class{v_1 \tensor \dotsb \tensor v_n} )
+  = v_1 \dotsm v_n
+\]
+for all~$v_1, \dotsc, v_n$.
+It follows on the other hand from~$\Tensor(V)/I$ being commutative that the {\klin} map
+\[
+          j
+  \colon  V
+  \to     \Tensor(V)
+  \to     \Tensor(V)/I
+\]
+induces an algebra homomorphism
+\[
+          \psi
+  \colon  \Symm(V)
+  \to     \Tensor(V)/I \,,
+\]
+which is given by
+\[
+    \psi(v_1 \dotsm v_n)
+  = \class{v_1} \dotsm \class{v_n}
+  = \class{v_1 \tensor \dotsb \tensor v_n}
+\]
+for all~$v_1, \dotsc, v_n \in V$.
+The algebra homomorphisms~$\varphi$ and~$\psi$ are mutually inverse on a set of vector space generators, and are hence mutually inverse.
+In other words,~$\varphi$ is an isomorphism with~$\varphi^{-1} = \psi$.
+
+
+\begin{remark}
+  One could also reformulate the above discussion by noting that for every commutative~{\kalg}~$C$ we have bijections
+  \begin{align*}
+         {}&  \{ \text{algebra homomorphisms~$\Tensor(V)/I \to C$} \} \\
+    \cong{}&  \{ \text{algebra homomorphisms~$\Tensor(V) \to C$} \} \\
+    \cong{}&  \{ \text{linear maps~$V \to C$} \}  \\
+    \cong{}&  \{ \text{algebra homomorphisms~$\Symm(V) \to C$} \} \,.
+  \end{align*}
+  These bijections are actually natural in~$C$, and hence give a natural isomorphism
+  \[
+          \Hom_{\kCommAlg}(\Tensor(V)/I, -)
+    \cong \Hom_{\kCommAlg}(\Symm(V), -) \,.
+  \]
+  It now follows from Yoneda’s lemma that~$\Tensor(V)/I \cong \Symm(V)$.
+\end{remark}
+
+Note that the constructed homomorphism~$\tilde{\varphi} \colon \Tensor(V) \to \Symm(V)$ maps the homogeneous part~$\Tensor(V)_d = V^{\tensor d}$ onto the homogeneous part~$\Symm^d(V)$, and is therefore a homomorphism of graded~{\kalgs}.
+It follows that the induced isomorphism~$\varphi \colon \Tensor(V)/I \to \Symm(V)$ is also a homomorphism of~{\kalgs} because
+\[
+    \varphi( (\Tensor(V)/I)_d )
+  = \varphi( \pi(\Tensor(V)_d) )
+  = \tilde{\varphi}( \Tensor(V)_d )
+  = \Symm^d(V) \,,
+\]
+where~$\pi \colon \Tensor(V) \to \Tensor(V)/I$ denotes the canonical projection.
+Hence~$\varphi$ is an isomorphism of graded~{\kalgs}.
+
+Note that if~$(v_i)_{i \in I}$ is a basis of~$V$ then we may further identify the symmetric algebra~$\Symm(V)$ with the poylnomial ring~$k[X_i \suchthat i \in I]$.
+Indeed, there exist a unique linear map
+\[
+          f
+  \colon  V
+  \to     k[X_i \suchthat i \in I]
+\]
+with~$f(v_i) = X_i$ for every~$i \in I$, and this linear maps induces by the universal property of the symmetric algebra~$\Symm(V)$ an algebra homomorphism
+\[
+          \alpha
+  \colon  \Symm(V)
+  \to     k[X_i \suchthat i \in I]
+\]
+with~$\alpha(v_i) = X_i$ for every~$i \in I$.
+It follows on the other hand from the universal property of the polynomial ring~$k[X_i \suchthat i \in I]$ that there exist a unique algebra homomorphism
+\[
+          \beta
+  \colon  k[X_i \suchthat i \in I]
+  \to     \Symm(V)
+\]
+with~$\beta(X_i) = v_i$ for every~$i \in I$.
+As the symmetric algebra~$\Symm(V)$ is generated by the basis elements~$v_i$, and the polynomial ring~$k[X_i \suchthat i \in I]$ is generated is generated by the variables~$X_i$, we find that~$\varphi$ and~$\psi$ are mutually inverse on a set of algebra generators, and hence mutually inverse.
+
+The isomorphism~$\alpha$ maps the homogeneous component~$\Symm^d(V)$ onto the homogeneous component~$k[X_i \suchthat i \in I]_d$, and is hence already an isomorphism of graded~{\kalgs}.
+We thus find that
+\[
+        \Tensor(V)/I
+  \cong \Symm(V)
+  \cong k[X_i \suchthat i \in I]
+\]
+as graded~{\kalgs}.
+
+
+
+
+
+
+
+
+
+
+
+\subsection{}
+
+This is just the filtration associated to the grading of the tensor algebra from part~\ref{grading on tensor algebra} of the exercise.
+
+
+
+
+
+\subsection{}
+
+We won’t give a complete solution to this problem, but instead state the relevant results and sketch how one can proceed to prove them:
+
+Let~$A$ be an associative algebra and for all~$x, y \in A$ let
+\[
+            [x,y]
+  \defined  xy - yx
+\]
+be the \emph{commutator} of~$x$ and~$y$.
+Then we can consider the algebra
+\[
+            U(A)
+  \defined  \Tensor(A)/I
+\]
+where~$I \subseteq \Tensor(A)$ is the {\twosided} ideal
+\[
+            I
+  \defined  \genideal{
+              x \tensor y - y \tensor x - [x,y]
+              \suchthat
+              x, y \in A
+            } \,.
+\]
+(The ideal~$I$ is built in precisely such a way that
+\[
+    [x, y]_{(\Tensor(V)/I)}
+  = \class{x} \, \class{y} - \class{y} \class{x}
+  = \class{x \tensor y - y \tensor x}
+  = \class{[x,y]}
+  = [x,y]_A
+\]
+for all~$x, y \in A$, i.e.\ such that the commutator in~$A$ coincides with the one in~$\Tensor(V)/I$.)
+We then have the following classical result:
+
+\begin{theorem}[{\pbw}]
+  Let~$A$ be a~{\kalg} and let~$(x_i)_{i \in I}$ be a basis of~$A$ where~$(I, \leq)$ is a linearly ordered set.
+  Then the ordered monomials
+  \[
+    x_{i_1}^{n_1} \dotsm x_{i_r}^{n_r}
+  \]
+  with~$r \geq 0$,~$n_1, \dotsc, n_r \geq 1$ and~$i_1 < \dotsb < i_r$ form a basis of~$U(A)$.
+  (Here we write for~$x \in A$ the resulting element~$\class{x} \in U(A)$ by abuse of notation again as~$x$.)
+\end{theorem}
+
+\begin{remark}
+  The {\pbw} theorem actually holds for every Lie algebra~$\mathfrak{g}$ over the field~$k$, where one defines the \emph{universal enveloping algebra} of~$\mathfrak{g}$ as
+  \[
+      \mathcal{U}(\mathfrak{g})
+    = \Tensor(\mathfrak{g})
+      /
+      \genideal{
+        x \tensor y - y \tensor x - [x,y]
+      \suchthat
+        x, y \in \mathfrak{g}
+      } \,.
+  \]
+  The universal enveloping algebra~$\mathcal{U}(\mathfrak{g})$ is the \enquote{most general}~{\kalg} which contains~$\mathfrak{g}$ as a Lie subalgebra.
+  As a functor it is left adjoint to the forgetful functor~$\kAlg \to \kLie$.
+\end{remark}
+
+The (standard) proof of the {\pbw} theorem proceeds similar to the proof that the monomials~$x^n y^m$ with~$n, m \geq 0$ form a basis of the first Weyl algebra~$A_1 \cong k\gen{x, y}/\genideal{yx - xy - 1}$:%
+\footnote{One can in fact derive the result for the Weyl algebra from the {\pbw} theorem.}
+\begin{itemize}
+  \item
+    One first notes that the algebra~$U(A) = \Tensor(A)/I$ is spanned by the residue classes
+    \begin{equation}
+      \label{first generating set}
+      x_{i_1} \dotsm x_{i_n}
+      \qquad
+      \text{where~$n \geq 0$ and~$i_1, \dotsc, i_n \in I$}
+    \end{equation}
+    because the tensor algebra~$\Tensor(V)$ has the simple tensors~$x_{i_1} \tensor \dotsb \tensor x_{i_n}$ with~$n \geq 0$ and~$i_1, \dotsc, i_n \in I$ as a basis.
+    One can then use the rearrangement rule
+    \[
+        y x
+      = \class{y \tensor x}
+      = \class{x \tensor y} + \class{[y,x]}
+      = x y + [y,x]
+    \]
+    for~$x, y \in A$ to show that every monomial of the form~\eqref{first generating set} can be written as a linear combination of the monomials
+    \begin{equation}
+      \label{second generating set}
+      x_{i_1} \dotsm x_{i_n}
+      \qquad
+      \text{where~$n \geq 0$ and~$i_1, \dotsc, i_n \in I$ with~$i_1 \leq \dotsb \leq i_n$} \,.
+    \end{equation}
+    (Note that this is precisely the proposed basis of the {\pbw} theorem.)
+  \item
+    The hard part is to show that the monomials~\eqref{first generating set} are linearly independent.
+    For this one uses the trick introduced in the tutorial:
+    One constructs an~{\module{$U(A)$}}~$M$ with~{\kbasis}
+    \begin{equation}
+      \label{actual basis}
+      X_{i_1} \dotsm X_{i_r}
+      \qquad
+      \text{where~$n \geq 0$ and~$i_1, \dotsc, i_n \in I$ with~$i_1 \leq \dotsb \leq i_n$}
+    \end{equation}
+    such that the action of every~$x_i$ on the basis~\eqref{actual basis} behaves the same as the action of~$x_i$ on~\eqref{second generating set}.
+    By using the linear independence of~\eqref{actual basis} it can then be conluded that~\eqref{second generating set} is also linearly independent.
+\end{itemize}
+
+
+The above version of the {\pbw} theorem is also known as the \enquote{concrete version}, and it is equivalent to the following \enquote{abstract version}:
+
+\begin{theorem}[{\pbw}]
+  Let~$A$ be a~{\kalg} and let~$\pi \colon \Tensor(A) \to U(A)$ be the canonical projection (which is a homomorphism of filtered~{\kalg}).
+  Then the homomorphisms of graded~{\kalgs}
+  \[
+            \gr(\pi)
+    \colon  \Tensor(A)
+    \to     \gr(U(A))
+    \qquad\text{and}\qquad
+        \Tensor(A)
+    \to \Symm(A)
+  \]
+  have the same kernel, and hence induce an isomorphism of~{\kalgs}
+  \[
+          \gr(U(A))
+    \cong \Symm(A) \,.
+  \]
+\end{theorem}
+
+One can then also further identify the symmetric algebra~$\Symm(A)$ with a polynomial ring~$k[X_i \suchthat i \in I]$ (as graded~{\kalgs}) by choosing a basis~$(a_i)_{i \in I}$ of~$A$.
+
+It follows in particular for~$A = \mat{n}{k}$ that
+\[
+        \gr(U(\mat{n}{k}))
+  \cong \Symm(\mat{n}{k})
+  \cong k[X_1, \dotsc, X_{n^2}] \,.
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
