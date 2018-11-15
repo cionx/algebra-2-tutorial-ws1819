@@ -13,7 +13,7 @@ The main problem with this exercise is that it can be understood in two ways:
     We need show that a polynomial map~$f \colon W \to V$ is~\dash{$G$}{equivariant} if and only if the induced algebra homomorphism~$f^* \colon \Pol(V) \to \Pol(W)$ is~\dash{$G$}{invariant}.
   \item
     \label{any map}
-    We need to show that an arbitrary map~$f \colon W \to V$ is covariant if and only if~$f^* \colon \Pol(V) \to \Pol(W)$,~$h \mapsto h \circ f$ is a~{\welldef} algebra homomorphism which is~\dash{$G$}{invariant}.
+    We need to show that an arbitrary map~$f \colon W \to V$ is covariant (i.e.\ both polynomial and~\dash{$G$}{equivariant}) if and only if~$f^* \colon \Pol(V) \to \Pol(W)$,~$h \mapsto h \circ f$ is a~{\welldef} algebra homomorphism which is also~\dash{$G$}{invariant}.
 \end{enumerate}
 
 
@@ -21,26 +21,27 @@ We start by showing that~\ref*{polynomial map} and~\ref*{any map} are actually e
 For this we need to show that a map~$f \colon W \to V$ is polynomial if and only if~$f^* \colon \Pol(V) \to \Pol(W)$,~$h \mapsto h \circ f$ is a~{\welldef} algebra homomorphisms.
 We have already seen in the lecture that~$f^*$ is a {\welldef} algebra homomorphism if~$f$ is polynomial.
 
-Let on the other hand~$f^*$ be a {\welldef} algebra homorphism.
+Suppose on the other hand~$f^*$ is {\welldef}.
 Let~$v_1, \dotsc, v_n$ be a basis of~$V$.
 Then there exist unique functions~$f_1, \dotsc, f_n \colon V \to k$ with
 \[
-    f(v)
-  = f_1(v) w_1 + \dotsb + f_n(v) w_n
+    f(w)
+  = f_1(w) v_1 + \dotsb + f_n(w) v_n
 \]
-for every~$v \in V$.
+for every~$w \in W$.
 If~$\varphi_1, \dotsc, \varphi_n \in \Pol(V)$ denote the coordinate functions with respect to the basis~$v_1, \dotsc, v_n$ then
 \[
-    f_i(v)
-  = \varphi_i( f(v) )
-  = f^*(\varphi_i)(v)
+    f_i(w)
+  = \varphi_i( f(w) )
+  = f^*(\varphi_i)(w)
 \]
-for every~$v \in V$ and hence
+for every~$W \in W$ and hence
 \[
       f_i
   =   f^*(\varphi_i)
-  \in \Pol(V) \,.
+  \in \Pol(V)
 \]
+for every~$i = 1, \dotsc, n$.
 This shows that~$f_1, \dotsc, f_n$ are polynomial, and hence that~$f$ is polynomial.
 
 We now show~\ref*{polynomial map}.
@@ -51,25 +52,25 @@ For this we calculate for all~$g \in G$,~$h \in \Pol(V)$ and~$w \in W$ that
   ={}&  f^*(g^{-1}.h)(g^{-1}.w) \\
   ={}&  ((g^{-1}.h) \circ f)(g^{-1}.w)  \\
   ={}&  (g^{-1}.h)( f( g^{-1}.w ) ) \\
-  ={}&  h( g.f( g^{-1}.w ) ) \,.
+  ={}&  h( g.f( g^{-1}.w ) )  \\
+  ={}&  h( (g.f)(w) )\,.
 \end{align*}
 
-We also note that for every two elements~$v, v' \in V$ with~$v \neq v'$ there exist some polynomial function~$h \in \Pol(V)$ with~$h(v) \neq h(v')$.
+We note that for every two elements~$v, v' \in V$ with~$v \neq v'$ there exist some polynomial function~$h \in \Pol(V)$ with~$h(v) \neq h(v')$.
 Indeed, if we choose again a basis~$v_1, \dotsc, v_n$ of~$V$ then it holds for~$v = \sum_{i=1}^n a_i v_i$ and~$v' = \sum_{i=1}^n a'_i v_i$ with~$a_i, a'_i \in k$ that~$a_i \neq a'_i$ for some~$i$.
 For the coordinate functions~$\varphi_1, \dotsc, \varphi_n \in \Pol(V)$ with respect to the basis~$v_1, \dotsc, v_n$ we therefore have that~$\varphi_i(v) = a_i \neq a'_i = \varphi_i(v')$.
 So we may choose~$h = \varphi_i$.
 
-We therefore find that
+We now find that
 \begin{align*}
-   {}&  \text{$f^*$ is~\dash{$G$}{invariant}} \\
-  ={}&  g.f^* = f^* \\
-  ={}&  \text{$(g.f^*)(h)(w) = f^*(h)(w)$ for all~$h \in \Pol(V)$,~$w \in W$} \\
-  ={}&  \text{$h(g.f(g^{-1}.w)) = h(f(w))$ for all~$h \in \Pol(V)$,~$w \in W$}  \\
-  ={}&  \text{$g.f(g^{-1}.w) = f(w)$ for all~$w \in W$} \\
-  ={}&  \text{$(g.f)(w) = f(w)$ for all~$w \in W$}  \\
-  ={}&  g.f = f \\
-  ={}&  \text{$f$ is~\dash{$G$}{invariant}} \\
-  ={}&  \text{$f$ is~\dash{$G$}{equivariant}} \,,
+      {}& \text{$f^*$ is~\dash{$G$}{invariant}} \\
+  \iff{}& g.f^* = f^* \\
+  \iff{}& \text{$(g.f^*)(h)(w) = f^*(h)(w)$ for all~$h \in \Pol(V)$,~$w \in W$} \\
+  \iff{}& \text{$h((g.f)(w)) = h(f(w))$ for all~$h \in \Pol(V)$,~$w \in W$}  \\
+  \iff{}& \text{$(g.f)(w) = f(w)$ for all~$w \in W$}  \\
+  \iff{}& g.f = f \\
+  \iff{}& \text{$f$ is~\dash{$G$}{invariant}} \\
+  \iff{}& \text{$f$ is~\dash{$G$}{equivariant}} \,,
 \end{align*}
 where we use again (as seen in the lecture and in the tutorial) that a map~$f \colon W \to V$ is~\dash{$G$}{invariant} if and only if it is~\dash{$G$}{equivariant}.
 
@@ -79,37 +80,37 @@ where we use again (as seen in the lecture and in the tutorial) that a map~$f \c
 
 \subsection{}
 
-We know from the lecture that~$\Pol(\mat{n}{k})^{\SL_n(k)} = k[\det]$, hence that~$\Pol(\mat{n}{k})^{\SL_n(k)}$ has as a basis the determinant powers~$1, \det, \det^2, \dotsc$
-The grading of~$\Pol(\mat{n}{k})^{\SL_n(k)}$ is inherited from~$\Pol(\mat{n}{k})$, and the determinant~$\det$ is homogeneous of degree~$d$ by the Leibniz formula
+We know from the lecture that~$\Pol(\mat{n}{k})^{\SL_n(k)} = k[\det]$, hence that~$\Pol(\mat{n}{k})^{\SL_n(k)}$ has as a basis the determinant powers~$\det^p$ with~$p \geq 0$.
+The grading of~$\Pol(\mat{n}{k})^{\SL_n(k)}$ is inherited from~$\Pol(\mat{n}{k})$, and the determinant~$\det$ is homogeneous of degree~$n$ by the Leibniz formula
 \[
     \det
   = \sum_{\sigma \in S_n} \sign(\sigma) x_{1\sigma(1)} \dotsm x_{n\sigma(n)} \,.
 \]
-We thus find that the determinant power~$\det^m$ has homogeneous degree~$nm$ for all~$m \geq 0$.
+We thus find that the determinant power~$\det^p$ has homogeneous degree~$pn$ for all~$p \geq 0$.
 We can now pull back the grading of~$\Pol(\mat{n}{k})^{\SL_n(k)}$ via the isomorphism
 \[
           k[t]
-  \to     \Pol(\mat{n}{k})^{\SL_n(k)}
+  \to     \Pol(\mat{n}{k})^{\SL_n(k)} \,,
   \quad   p(t)
   \mapsto p(\det)
 \]
 to a grading of~$k[t]$;
-the basis element~$\det^m$ of~$\Pol(\mat{n}{k})^{\SL_n(k)}$ corresponds to the basis element~$t^m$ of~$k[t]$, which is therefore of homogeneous degree~$nm$.
+the basis element~$\det^p$ of~$\Pol(\mat{n}{k})^{\SL_n(k)}$ corresponds to the basis element~$t^p$ of~$k[t]$, which is therefore of homogeneous degree~$pn$.
 This shows that
 \[
-    k[t]_{mn}
-  = \gen{ t^m }_k
+    k[t]_{pn}
+  = \gen{ t^p }_k
 \]
-for all~$m \geq 0$, and~$k[t]_d = 0$ otherwise.
+for all~$p \geq 0$, and~$k[t]_d = 0$ otherwise.
 It follows in particular that
 \[
-    \dim k[t]_{mn}
+    \dim k[t]_{pn}
   = 1
 \]
-for all~$m \geq 0$ and~$\dim k[t]_d = 0$ otherwise.
-The Hilbert series of~$k[t]$ (with the above grading) is therefore given by
+for all~$p \geq 0$, and~$\dim k[t]_d = 0$ otherwise.
+The Hilbert series of~$k[t]$ (with the above grading) is therefore given by the power series (in the variable~$x$) given by
 \[
-    \sum_{m \geq 0} t^{nm}
-  = \sum_{m \geq 0} (t^n)^m
+    \sum_{p \geq 0} x^{pn}
+  = \sum_{p \geq 0} (x^n)^p
   = \frac{1}{1-t^n} \,.
 \]
