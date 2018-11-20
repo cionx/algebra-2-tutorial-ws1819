@@ -6,7 +6,7 @@
 
 \subsection*{A missing proof}
 
-We will give two proof of the following lemma from linear algebra:
+We will give two proof of the following lemma from linear algebra which we used in the tutorial:
 
 \begin{lemma}
   Let~$M$ be an~{\module{$R$}} and let~$P \subseteq N \subseteq M$ be submodules.
@@ -56,10 +56,10 @@ For the first proof we use linear algebra.
 
 \subsubsection*{Second Proof}
 
-For the second proof, we will again use some linear algebra:
+For the second proof we will also use some linear algebra:
 
 \begin{definition}
-  A map~$e \colon X \to X$ is \emph{idempotent} if~$e^2 = e$.
+  If~$X$ is a set then a map~$e \colon X \to X$ is \emph{idempotent} if~$e^2 = e$.
 \end{definition}
 
 \begin{definition}
@@ -119,14 +119,14 @@ For the second proof, we will again use some linear algebra:
 
 \begin{proof}[Second proof]
   Let~$e \colon M \to M$ be the projection onto~$P$ along~$C$.
-  The image of~$e$ is the submodule~$P$ of~$N$, and hence we can restrict~$e$ to an endomorphism~$e' \colon N \to N$.
+  The image of~$e$ is the submodule~$P$ of~$N$, and hence we can restrict the endomorphism~$e$ to an endomorphism~$e' \colon N \to N$.
   This restriction~$e'$ is again idempotent and therefore leads to a direct sum decomposition
   \[
       N
     = \im(e') \oplus \ker(e') \,.
   \]
   The first summand is given by~$e'(N) = P$.
-  The inclusion~$e'(N) \subseteq P$ holds by construction of~$e$, and the inclusion~$P \subseteq e'(N)$ holds becaue~$P \subseteq N$.
+  Indeed, the inclusion~$e'(N) \subseteq P$ holds by construction of~$e$, and the inclusion~$P \subseteq e'(N)$ follows from~$P \subseteq N$.
   The second summand is given by~$\ker(e') = \ker(e) \cap N = C \cap N$.
   We thus find that~$N = P \oplus (C \cap N)$, as desired.
 \end{proof}
@@ -144,7 +144,7 @@ We have seen the following \lcnamecref{fg has maximal submodules} in the tutoria
   Every nonzero fininitely generated~{\module{$R$}}~$M$ contains a maximal submodule.
 \end{lemma}
 
-We give a short proof Nakayama’s~lemma which uses this \lcnamecref{fg has maximal submodules}.
+We give a short proof Nakayama’s~lemma which is based on this \lcnamecref{fg has maximal submodules}.
 
 \begin{definition}
   \leavevmode
@@ -158,12 +158,13 @@ We give a short proof Nakayama’s~lemma which uses this \lcnamecref{fg has maxi
 \end{definition}
 
 \begin{remark}
-  One may call~$\Jac(R)$ the \emph{left Jacobson radical} of~$R$, as it is the intersection of all maximal left%
+  One may call~$\Jac(R)$ the \emph{left Jacobson~radical} of~$R$, as it is the intersection of all maximal left%
   \footnote{Because for us, \enquote{module} means \enquote{left module}.}
   ideals of~$R$.
+  One can then also define the \emph{right Jacobson~radical} of~$R$.
   But it turns out that both notions of Jacobson radical coincide.
   We will not need this here and will therefore not prove this.%
-  \footnote{The author also doesn’t know a good proof.}
+  \footnote{The author also doesn’t know a good proof. of this}
 \end{remark}
 
 We get from \cref{fg has maximal submodules} the following corollary:
@@ -182,15 +183,14 @@ The radical of a module is functorial in the following sense:
 \end{lemma}
 
 \begin{proof}
-  If~$P \subseteq N$ is any maximal ideal, then the preimage~$P' \defined f^{-1}(P)$ is the kernel of the composition~$M \xto{f} N \to N/P$.
+  If~$P \subseteq N$ is any maximal submodule then its preimage~$P' \defined f^{-1}(P)$ is the kernel of the composition~$M \xto{f} N \to N/P$.
   The homomorphism~$f$ therefore induces an injective homomorphism
   \[
                 M/P'
-    \inclusion  N/P \,,
+    \inclusion  N/P \,.
   \]
-  because~$P'$ is 
   The quotient module~$N/P$ is simple because~$P$ is maximal.
-  It follows that~$M/P' = 0$ or~$M/P \cong N/P$.
+  It follows that~$M/P' = 0$ or~$M/P' \cong N/P$.
   The submodule~$P'$ is therefore either the whole of~$M$ or maximal in~$M$.
   In both cases the radical~$\rad(M)$ is contained in~$P'$.
   
@@ -205,7 +205,7 @@ The radical of a module is functorial in the following sense:
 \end{corollary}
 
 \begin{proof}
-  For~$x \in M$ consider the map
+  Consider for~$x \in M$ the map
   \[
             \rho_x
     \colon  R
