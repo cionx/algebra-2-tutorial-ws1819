@@ -3,6 +3,7 @@
 \usepackage{enumitem} % better list type environments
 \usepackage{csquotes} % quotes
 \usepackage{amsmath, amssymb, amsthm, mathtools} % smath stuff
+\usepackage{stmaryrd} % (long)mapsfrom
 \usepackage{extarrows} % xlongrightarrow
 \usepackage{bbm}
 \usepackage{tikz-cd}
@@ -43,8 +44,11 @@
 % define theorem like environments
 \newcounter{everything}
 \theoremstyle{definition}
+\newtheorem{corollary}[everything]{Corollary}
+\newtheorem{definition}[everything]{Definition}
 \newtheorem{example}[everything]{Example}
 \newtheorem{lemma}[everything]{Lemma}
+\newtheorem{recall}[everything]{Recall}
 \newtheorem{proposition}[everything]{Proposition}
 \newtheorem{remark}[everything]{Remark}
 \newtheorem{theorem}[everything]{Theorem}
@@ -130,9 +134,12 @@
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\gr}{gr}
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Jac}{J}
 \newcommand{\mat}[2]{\operatorname{M}_{#1}(#2)}
 \newcommand{\mnat}[3]{\operatorname{M}(#1 \times #2, #3)}
 \newcommand{\Pol}{\mathcal{P}}
+\DeclareMathOperator{\rad}{rad}
 \DeclareMathOperator{\SL}{SL}
 \DeclareMathOperator{\SO}{SO}
 \newcommand{\sphere}{\mathbb{S}}

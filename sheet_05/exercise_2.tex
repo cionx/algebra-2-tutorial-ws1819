@@ -1,1 +1,239 @@
-\addtocounter{section}{1}
+\section{}
+
+
+
+
+
+\subsection*{A missing proof}
+
+We will give two proof of the following lemma from linear algebra:
+
+\begin{lemma}
+  Let~$M$ be an~{\module{$R$}} and let~$P \subseteq N \subseteq M$ be submodules.
+  If a submodule~$C \subseteq M$ is a direct complement of~$P$ in~$M$, then~$C \cap N$ is a direct complement of~$P$ in~$N$, i.e.\ if~$M = P \oplus C$ then~$N = P \oplus (C \cap N)$.
+\end{lemma}
+
+
+
+\subsubsection*{First Proof}
+
+For the first proof we use linear algebra.
+
+\begin{recall}
+  \label{modularity}
+  Let~$M$ be an~{\module{$R$}} and let~$P \subseteq N \subseteq M$ be submodules.
+  Then
+  \[
+      P + (C \cap N)
+    = (P + C) \cap N
+  \]
+  for every submodule~$C \subseteq M$
+\end{recall}
+
+\begin{remark}
+  \Cref{modularity} states that the lattice of submodules of~$M$ is modular.
+\end{remark}
+
+\begin{proof}[First proof]
+  It holds that
+  \[
+      P \cap (C \cap N)
+    = P \cap C \cap N
+    = 0 \cap N
+    = 0 \,,
+  \]
+  and it holds by~\cref{modularity} that
+  \[
+      P + (C \cap N)
+    = (P + C) \cap N
+    = M \cap N
+    = N \,.
+  \]
+  Hence~$N = P \oplus (C \cap N)$.
+\end{proof}
+
+
+
+\subsubsection*{Second Proof}
+
+For the second proof, we will again use some linear algebra:
+
+\begin{definition}
+  A map~$e \colon X \to X$ is \emph{idempotent} if~$e^2 = e$.
+\end{definition}
+
+\begin{definition}
+  Let~$M$ be an~{\module{$R$}} and let~$P, C \subseteq M$ be two submodules for which~$M = P \oplus C$.
+  Then the map~$e \colon M \to M$ given by
+  \[
+      e(p + c)
+    = p
+  \]
+  for all~$p \in P$ and~$c \in C$ is the \emph{projection} onto~$P$ along(side)~$C$.
+\end{definition}
+
+
+\begin{recall}
+  Let~$M$ be an~{\module{$R$}}.
+  \begin{enumerate}
+    \item
+      Let~$P, C \subseteq M$ be submodules with~$M = P \oplus C$.
+      Then the projection~$e_{P,C} \colon M \to M$ onto~$P$ along~$C$ is an idempotent endomorphisms with~$\im(e) = P$ and~$\ker(e) = C$.
+    \item
+      If~$e \colon M \to M$ is any idempotent endomorphism then
+      \[
+        M = \im(e) \oplus \ker(e) \,.
+      \]
+    \item
+      The above constructions yield a~{\onetoone} correspondence
+      \begin{align*}
+          \left\{
+            (P,C)
+          \suchthat*
+            \begin{tabular}{c}
+              submodules  \\
+              $P, C \subseteq M$  \\
+              with~$M = P \oplus C$
+            \end{tabular}
+          \right\}
+        &\longleftrightarrow
+          \left\{
+            \begin{tabular}{c}
+              idempotent  \\
+              endomorphisms \\
+              $e \colon M \to M$
+            \end{tabular}
+          \right\} \,,
+          \\
+            (P,C)
+          &\longmapsto
+            e_{P,C} \,,
+          \\
+            (\im(e), \ker(e))
+          &\longmapsfrom
+            e \,.
+      \end{align*}
+  \end{enumerate}
+\end{recall}
+
+
+\begin{proof}[Second proof]
+  Let~$e \colon M \to M$ be the projection onto~$P$ along~$C$.
+  The image of~$e$ is the submodule~$P$ of~$N$, and hence we can restrict~$e$ to an endomorphism~$e' \colon N \to N$.
+  This restriction~$e'$ is again idempotent and therefore leads to a direct sum decomposition
+  \[
+      N
+    = \im(e') \oplus \ker(e') \,.
+  \]
+  The first summand is given by~$e'(N) = P$.
+  The inclusion~$e'(N) \subseteq P$ holds by construction of~$e$, and the inclusion~$P \subseteq e'(N)$ holds becaue~$P \subseteq N$.
+  The second summand is given by~$\ker(e') = \ker(e) \cap N = C \cap N$.
+  We thus find that~$N = P \oplus (C \cap N)$, as desired.
+\end{proof}
+
+
+
+
+
+\subsection*{A Remark Regarding Nakayama}
+
+We have seen the following \lcnamecref{fg has maximal submodules} in the tutorial.
+
+\begin{lemma}
+  \label{fg has maximal submodules}
+  Every nonzero fininitely generated~{\module{$R$}}~$M$ contains a maximal submodule.
+\end{lemma}
+
+We give a short proof Nakayama’s~lemma which uses this \lcnamecref{fg has maximal submodules}.
+
+\begin{definition}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      The \emph{radical} of an~{\module{$R$}}~$M$ is the intersection of all of its maximal submodules;
+      it is denoted by~$\rad(M)$.
+    \item
+      The \emph{Jacobson~radical} of~$M$ is~$\Jac(R) \defined \rad(R)$.
+  \end{enumerate}
+\end{definition}
+
+\begin{remark}
+  One may call~$\Jac(R)$ the \emph{left Jacobson radical} of~$R$, as it is the intersection of all maximal left%
+  \footnote{Because for us, \enquote{module} means \enquote{left module}.}
+  ideals of~$R$.
+  But it turns out that both notions of Jacobson radical coincide.
+  We will not need this here and will therefore not prove this.%
+  \footnote{The author also doesn’t know a good proof.}
+\end{remark}
+
+We get from \cref{fg has maximal submodules} the following corollary:
+
+\begin{corollary}
+  \label{radical is proper}
+  If~$M$ is a nonzero finitely generated~{\module{$R$}} then its radical~$\rad(M)$ is a proper submodule of~$M$.
+\end{corollary}
+
+The radical of a module is functorial in the following sense:
+
+\begin{lemma}
+  \label{functoriality of radical}
+  Let~$M$ and~$N$ be~{\modules{$R$}} and lets~$f \colon M \to N$ be a homomorphism of~{\modules{$R$}}.
+  Then~$f(\rad(M)) \subseteq \rad(N)$.
+\end{lemma}
+
+\begin{proof}
+  If~$P \subseteq N$ is any maximal ideal, then the preimage~$P' \defined f^{-1}(P)$ is the kernel of the composition~$M \xto{f} N \to N/P$.
+  The homomorphism~$f$ therefore induces an injective homomorphism
+  \[
+                M/P'
+    \inclusion  N/P \,,
+  \]
+  because~$P'$ is 
+  The quotient module~$N/P$ is simple because~$P$ is maximal.
+  It follows that~$M/P' = 0$ or~$M/P \cong N/P$.
+  The submodule~$P'$ is therefore either the whole of~$M$ or maximal in~$M$.
+  In both cases the radical~$\rad(M)$ is contained in~$P'$.
+  
+  This shows that~$\rad(M) \subseteq f^{-1}(P)$ for every maximal submodule~$P \subseteq N$, and hence that~$f(\rad(M)) \subseteq P$.
+  It follows that~$f(\rad(M)) \subseteq \rad(N)$.
+\end{proof}
+
+\begin{corollary}
+  \label{jacobson to radical}
+  Let~$M$ be an~{\module{$R$}}.
+  Then~$\Jac(R) M \subseteq \rad(M)$.
+\end{corollary}
+
+\begin{proof}
+  For~$x \in M$ consider the map
+  \[
+            \rho_x
+    \colon  R
+    \to     M \,,
+    \quad   r
+    \mapsto rx \,.
+  \]
+  The map~$\rho_x$ is a homomorphism of~{\modules{$R$}}, and so it follows that
+  \[
+              \Jac(R) x
+    =         \rho_x( \Jac(R) )
+    =         \rho_x( \rad(R) )
+    \subseteq \rad(M)
+  \]
+  by \cref{functoriality of radical}.
+\end{proof}
+
+We are now ready to state and prove Nakayama’s~lemma.
+
+\begin{lemma}[Nakayama]
+  If~$M$ is a finitely generated~{\module{$R$}} with~$\Jac(R) M = M$ then~$M = 0$.
+\end{lemma}
+
+\begin{proof}
+  If~$M$ were nonzero then it would follow from \cref{radical is proper} and \cref{jacobson to radical} that~$\Jac(R) M \subseteq \rad(M) \subsetneq M$.
+\end{proof}
+
+
+
+
+
