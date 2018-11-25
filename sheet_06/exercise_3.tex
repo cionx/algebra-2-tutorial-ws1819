@@ -1,1 +1,122 @@
-\addtocounter{section}{1}
+\section{}
+
+Recall the universal properties of the direct sum and the direct product:
+
+\begin{itemize}
+  \item
+    Let~$(M_\alpha)_{\alpha \in A}$ be a collection of~{\modules{$R$}} and let~$N$ be another~{\module{$R$}}.
+    For every~$\alpha \in A$ let~$i_\alpha \colon M_\alpha \to \bigoplus_{\beta \in A} M_\beta$ be the inclusion into the~\dash{$\alpha$}{th} summand.
+    
+    Then every choice of homomorphism~$f_\alpha \colon M_\alpha \to N$ with~$\alpha \in A$ can be uniquely extended to homomorphism~$f \colon \bigoplus_{\alpha \in A} M_\alpha \to N$, in the sense that~$f \circ i_\alpha = f_\alpha$ for every~$\alpha \in A$.
+    The homomorphism~$f$ is given on elements by
+    \[
+        f\left( (m_\alpha)_{\alpha \in A} \right)
+      = \sum_{\alpha \in A} f_\alpha(m_\alpha)
+    \]
+    for every~$(m_\alpha)_{\alpha \in A} \in \bigoplus_{\alpha \in A} M_\alpha$.
+    Note that~$f$ is~{\welldef} because~$m_\alpha = 0$ for all but finitely many~$\alpha \in A$, and hence also~$f_\alpha(m_\alpha) = 0$ for all but finitely many~$\alpha \in A$.
+    
+    This results in an isomorphism of abelian groups
+    \[
+        \Hom_R\left( \bigoplus_{\alpha \in A} M_\alpha, N \right)
+      \longleftrightarrow
+        \prod_{\alpha \in A} \Hom_R(M_\alpha, N) \,.
+    \]
+  \item
+    Let~$M$ be an~{\module{$R$}} and let~$(N_\alpha)_{\alpha \in A}$ be a collection of~{\modules{$R$}}.
+    For every~$\alpha \in A$ let~$p_\alpha \colon \prod_{\beta \in A} N_\beta \to N_\alpha$ be the projection onto the~\dash{$\alpha$}{th} factor.
+    
+    Then every choice of homomorphism~$f_\alpha \colon M \to N_\alpha$ with~$\alpha \in A$ can be uniquely combined into homomorphism~$f \colon M \to \prod_{\alpha \in A} N_\alpha$, in the sense that~$p_\alpha \circ f = f_\alpha$ for every~$\alpha \in A$.
+    The homomorphism~$f$ is given on elements by
+    \[
+        f(m)
+      = ( f_\alpha(m) )_{\alpha \in A}
+    \]
+    for every~$m \in M$.
+    
+    This results in an isomorphism of abelian groups
+    \[
+        \Hom_R\left( M, \prod_{\alpha \in A} M_\alpha \right)
+      \longleftrightarrow
+        \prod_{\alpha \in A} \Hom_R(M, N_\alpha) \,.
+    \]
+\end{itemize}
+
+We now have that
+\begin{align*}
+          R'
+   =      \End_\Integer(E)
+   =      \Hom_\Integer(E, E)
+  &=      \Hom_\Integer\left( \bigoplus_p \Integer/p , \bigoplus_q \Integer/q \right) \\
+  &\cong  \prod_p \Hom_\Integer \left( \Integer/p, \bigoplus_q \Integer/q \right)
+\end{align*}
+The inclusion~$i \colon \bigoplus_q \Integer/q \to \prod_q \Integer/q$ induces an inclusion of abelian groups
+\[
+                \Hom_\Integer \left( \Integer/p, \bigoplus_q \Integer/q \right)
+  \xlongto{i_*} \Hom_\Integer \left( \Integer/p, \prod_q \Integer/q \right)
+  \cong         \prod_q \Hom_\Integer( \Integer/p, \Integer/q ) \,.
+\]
+It follows from Schur’s lemma that~$\Hom_\Integer(\Integer/p, \Integer/q) = 0$ if~$p \neq q$, and we have for~$p = q$ that
+\[
+        \Hom_\Integer( \Integer/p, \Integer/p )
+  =     \Hom_{\Integer/p}( \Integer/p, \Integer/p )
+  =     \End_{\Integer/p}( \Integer/p )
+  \cong \Integer/p \,.
+\]
+Hence
+\[
+        \Hom_\Integer \left( \Integer/p, \prod_q \Integer/q \right)
+  \cong \Integer/p \,,
+\]
+where for~$\lambda \in \Integer/p$ the corresponding homomorphism maps~$x \in \Integer/p$ onto~$(y_q)_q \in \prod_q \Integer/q$ with
+\[
+    y_q
+  = \begin{cases}
+      \lambda x & \text{if~$q = p$} \,, \\
+      0         & \text{otherwise} \,.
+    \end{cases}
+\]
+Every such homomorphism restricts to a homomorphism~$\Integer/p \to \bigoplus_q \Integer/q$.
+Hence we find that
+\[
+        \Hom_\Integer \left( \Integer/p, \bigoplus_q \Integer/q \right)
+  \cong \Integer/q
+\]
+with the same description as above.
+
+It follows that
+\[
+        R'
+  \cong \prod_p \Hom_\Integer \left( \Integer/p, \bigoplus_q \Integer/q \right)
+  \cong \prod_p \Integer/p \,.
+\]
+An element~$(\lambda_p)_p$ acts on~$E$ via
+\[
+    (\lambda_p)_p \cdot (x_p)_p
+  = (\lambda_p x_p)_p \,.
+\]
+
+To determine~$R''$ we use the following observation:
+
+\begin{lemma}
+  Let~$R$ be a commutative ring and let~$M$ be an~{\module{$R$}}.
+  If~$R' = \End_R(M)$ is again commutative then~$R'' = R'$.
+\end{lemma}
+
+\begin{proof}
+  It follows from~$R$ being commutative that~$R \subseteq R'$, and hence that~$R' \supseteq R''$.
+  It holds that~$R' \subseteq R''$ because~$R$ is commutative.
+\end{proof}
+
+We find that~$R'' = R' = \prod_p \Integer/p$.
+The (unique) ring homomorphism
+\[
+      \Integer
+  =   R
+  \to R''
+  =   \prod_p \Integer/p
+\]
+is not surjective, so~$R'' \neq R$.
+
+
+
