@@ -1,1 +1,53 @@
-\addtocounter{section}{1}
+\section{}
+
+
+
+
+
+\subsection{}
+\label{classification of simple modules}
+
+Let more generally~$R$ be any ring and let~$M$ be an~{\module{$R$}}.
+Recall that a submodule~$N \subseteq M$ is \emph{maximal} if it follows for every intermediate submodule~$N \subseteq P \subseteq M$ that~$P= N$ or~$P = M$.
+This is equivalent to the quotient module~$M/N$ having precisely two submodules, i.e. equivalent to~$M/N$ being simple.
+
+It follows in particular that~$R/M$ is simple for every maximal left ideal~$M \subseteq R$.
+Every simple~\dash{$R$}{module}~$S$ is already of this form:
+
+The module~$S$ is cyclic:
+It holds that~$S \neq 0$ and for~$x \in S$ with~$x \neq 0$ the submodule~$\gen{x}$ is a nonzero submodule of~$S$.
+Hence~$S = \gen{x}$ because~$S$ is simple.
+
+This shows that~$S \cong R/M$ for some module~$M$.
+That~$S$ is simple is by the above argumentaiton equivalent to~$M$ being maximal.
+
+The maximal ideals in~$\Integer$ are~$p \Integer$ with~$p$ prime.
+The simple~{\modules{$\Integer$}} are therefore (up to isomorphism) precisely~$\Integer/p$ with~$p$ prime.
+
+
+
+
+\subsection{}
+
+If~$R$ is an integral domain that is not a field then~$R$ not semisimple:
+It holds for any two nonzero ideals~$I, J \subseteq R$ that~$I \cap J \supseteq IJ \neq 0$, and hence that the sum~$I + J$ is not direct.
+If~$x \in R$ is a nonzero \dash{non}{unit} then this shows that the generated ideal~$\gen{x}$ has no direct complement.
+
+In particular~$2 \Integer \subseteq \Integer$ has no direct complement.
+
+
+
+
+
+\subsection{}
+
+Every semisimple~\dash{$\Integer$}{module}~$M$ is by part~\ref{classification of simple modules} of the form
+\[
+  M \cong \bigoplus_{i \in I} \Integer/p_i
+\]
+for some primes~$p_i$.
+The primes~$p_i$ are in particular \dash{square}{free}, which proves the statement.
+
+
+
+
