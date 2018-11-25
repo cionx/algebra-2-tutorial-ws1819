@@ -49,5 +49,20 @@ for some primes~$p_i$.
 The primes~$p_i$ are in particular \dash{square}{free}, which proves the statement.
 
 
+\begin{remark}
+  One has for every~$n \geq 0$ that~$\Integer/n$ is semisimple if and only if~$n$ is \dash{square}{free}.
+  Indeed, if~$n = 0$ then~$\Integer/n = \Integer$ is not semisimple.
+  If~$n \geq 1$ then we may write~$n = p_1^{n_1} \dotsm p_r^{n_r}$ for some pairwise different primes~$p_i$ and exponents~$n_i \geq 0$.
+  Then
+  \[
+          \Integer/n
+    \cong \Integer/p_1^{n_1} \oplus \Integer/p_r^{n_r}
+  \]
+  by the chinese reminder theorem, and this is a decomposition into indecomposable~{\modules{$\Integer$}} by the classification of finitely generated abelian groups.
+  Hence~$\Integer/n$ is semisimple if and only if every summand~$\Integer/p_i^{n_i}$ is already simple.
+  We have seen above that this is the case if and only if every~$p_i^{n_i}$ is prime, i.e.\ if and only if~$n_i = 1$ for every~$i = 1, \dotsc, r$.
+  
+  It follows that an~{\module{$\Integer$}}~$M$ is semisimple if and only if~$M \cong \bigoplus_i \Integer/n_i$ where the~$n_i$ are \dash{square}{free} integers.
+\end{remark}
 
 
