@@ -16,7 +16,7 @@ Recall the universal properties of the direct sum and the direct product:
     for every~$(m_\alpha)_{\alpha \in A} \in \bigoplus_{\alpha \in A} M_\alpha$.
     Note that~$f$ is~{\welldef} because~$m_\alpha = 0$ for all but finitely many~$\alpha \in A$, and hence also~$f_\alpha(m_\alpha) = 0$ for all but finitely many~$\alpha \in A$.
     
-    This results in an isomorphism of abelian groups
+    This construction results in an isomorphism of abelian groups
     \[
         \Hom_R\left( \bigoplus_{\alpha \in A} M_\alpha, N \right)
       \longleftrightarrow
@@ -34,13 +34,24 @@ Recall the universal properties of the direct sum and the direct product:
     \]
     for every~$m \in M$.
     
-    This results in an isomorphism of abelian groups
-    \[
+    This construction results in an isomorphism of abelian groups
+    \begin{equation}
+      \label{iso for product}
         \Hom_R\left( M, \prod_{\alpha \in A} M_\alpha \right)
       \longleftrightarrow
         \prod_{\alpha \in A} \Hom_R(M, N_\alpha) \,.
-    \]
+    \end{equation}
 \end{itemize}
+
+\begin{warning}
+  The isomorphism~\eqref{iso for product} does in general not restrict to an isomorphism
+  \[
+      \Hom_R\left( M, \bigoplus_{\alpha \in A} M_\alpha \right)
+    \longleftrightarrow
+      \bigoplus_{\alpha \in A} \Hom_R(M, N_\alpha) \,.
+  \]
+  This is however true if~$M$ is finitely generated.
+\end{warning}
 
 We now have that
 \begin{align*}
@@ -68,19 +79,19 @@ Hence
         \Hom_\Integer \left( \Integer/p, \prod_q \Integer/q \right)
   \cong \Integer/p \,,
 \]
-where for~$\lambda \in \Integer/p$ the corresponding homomorphism maps~$x \in \Integer/p$ onto~$(y_q)_q \in \prod_q \Integer/q$ with
+where for~$\lambda \in \Integer/p$ the corresponding homomorphism is given by
 \[
-    y_q
-  = \begin{cases}
-      \lambda x & \text{if~$q = p$} \,, \\
-      0         & \text{otherwise} \,.
-    \end{cases}
+  \Integer/p
+  \xlongto{\lambda \cdot (-)}
+  \Integer/p
+  \inclusion
+  \prod_q \Integer/q \,.
 \]
-Every such homomorphism restricts to a homomorphism~$\Integer/p \to \bigoplus_q \Integer/q$.
-Hence we find that
+Every such homomorphism restricts to a homomorphism~$\Integer/p \to \bigoplus_q \Integer/q$, hence the above homomorphism~$i_*$ is already an isomorphism.
+We thus find that
 \[
         \Hom_\Integer \left( \Integer/p, \bigoplus_q \Integer/q \right)
-  \cong \Integer/q
+  \cong \Integer/q \,,
 \]
 with the same description as above.
 
@@ -88,9 +99,9 @@ It follows that
 \[
         R'
   \cong \prod_p \Hom_\Integer \left( \Integer/p, \bigoplus_q \Integer/q \right)
-  \cong \prod_p \Integer/p \,.
+  \cong \prod_p \Integer/p \,,
 \]
-An element~$(\lambda_p)_p$ acts on~$E$ via
+where an element~$(\lambda_p)_p \in \prod_p \Integer/p$ acts on~$(x_p)_p \in E$ via
 \[
     (\lambda_p)_p \cdot (x_p)_p
   = (\lambda_p x_p)_p \,.
@@ -105,7 +116,7 @@ To determine~$R''$ we use the following observation:
 
 \begin{proof}
   It follows from~$R$ being commutative that~$R \subseteq R'$, and hence that~$R' \supseteq R''$.
-  It holds that~$R' \subseteq R''$ because~$R$ is commutative.
+  It holds that~$R' \subseteq R''$ because~$R'$ is commutative.
 \end{proof}
 
 We find that~$R'' = R' = \prod_p \Integer/p$.

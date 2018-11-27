@@ -10,19 +10,23 @@
 Let more generally~$R$ be any ring and let~$M$ be an~{\module{$R$}}.
 Recall that a submodule~$N \subseteq M$ is \emph{maximal} if it follows for every intermediate submodule~$N \subseteq P \subseteq M$ that~$P= N$ or~$P = M$.
 This is equivalent to the quotient module~$M/N$ having precisely two submodules, i.e. equivalent to~$M/N$ being simple.
-
 It follows in particular that~$R/M$ is simple for every maximal left ideal~$M \subseteq R$.
-Every simple~\dash{$R$}{module}~$S$ is already of this form:
 
+Every simple~\dash{$R$}{module}~$S$ is already of this form.
 The module~$S$ is cyclic:
 It holds that~$S \neq 0$ and for~$x \in S$ with~$x \neq 0$ the submodule~$\gen{x}$ is a nonzero submodule of~$S$.
 Hence~$S = \gen{x}$ because~$S$ is simple.
-
 This shows that~$S \cong R/M$ for some module~$M$.
 That~$S$ is simple is by the above argumentaiton equivalent to~$M$ being maximal.
 
 The maximal ideals in~$\Integer$ are~$p \Integer$ with~$p$ prime.
-The simple~{\modules{$\Integer$}} are therefore (up to isomorphism) precisely~$\Integer/p$ with~$p$ prime.
+The simple~{\modules{$\Integer$}} are therefore (up to isomorphism) precisely~$\Integer/p\Integer$ with~$p$ prime.
+
+\begin{warning}
+  Different maximal ideals~$M, M' \subseteq R$ may given isomorphic simple modules~$R/M \cong R/M'$.
+  An example for this is~$R = \mat{n}{k}$ with~$n \geq 2$ and~$k$ a field.
+\end{warning}
+
 
 
 
@@ -56,9 +60,10 @@ The primes~$p_i$ are in particular \dash{square}{free}, which proves the stateme
   Then
   \[
           \Integer/n
-    \cong \Integer/p_1^{n_1} \oplus \Integer/p_r^{n_r}
+    \cong \Integer/p_1^{n_1} \oplus \dotsb \oplus \Integer/p_r^{n_r}
   \]
-  by the chinese reminder theorem, and this is a decomposition into indecomposable~{\modules{$\Integer$}} by the classification of finitely generated abelian groups.
+  by the chinese reminder theorem.
+  This is already a decomposition into indecomposable~{\modules{$\Integer$}} by the classification of finitely generated abelian groups.
   Hence~$\Integer/n$ is semisimple if and only if every summand~$\Integer/p_i^{n_i}$ is already simple.
   We have seen above that this is the case if and only if every~$p_i^{n_i}$ is prime, i.e.\ if and only if~$n_i = 1$ for every~$i = 1, \dotsc, r$.
   
