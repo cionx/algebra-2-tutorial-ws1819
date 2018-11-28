@@ -7,7 +7,7 @@ Recall the universal properties of the direct sum and the direct product:
     Let~$(M_\alpha)_{\alpha \in A}$ be a collection of~{\modules{$R$}} and let~$N$ be another~{\module{$R$}}.
     For every~$\alpha \in A$ let~$i_\alpha \colon M_\alpha \to \bigoplus_{\beta \in A} M_\beta$ be the inclusion into the~\dash{$\alpha$}{th} summand.
     
-    Then every choice of homomorphism~$f_\alpha \colon M_\alpha \to N$ with~$\alpha \in A$ can be uniquely extended to homomorphism~$f \colon \bigoplus_{\alpha \in A} M_\alpha \to N$, in the sense that~$f \circ i_\alpha = f_\alpha$ for every~$\alpha \in A$.
+    Then every choice of homomorphism~$f_\alpha \colon M_\alpha \to N$ with~$\alpha \in A$ can be uniquely extended to a homomorphism~$f \colon \bigoplus_{\alpha \in A} M_\alpha \to N$, in the sense that~$f \circ i_\alpha = f_\alpha$ for every~$\alpha \in A$.
     The homomorphism~$f$ is given on elements by
     \[
         f\left( (m_\alpha)_{\alpha \in A} \right)
@@ -26,7 +26,7 @@ Recall the universal properties of the direct sum and the direct product:
     Let~$M$ be an~{\module{$R$}} and let~$(N_\alpha)_{\alpha \in A}$ be a collection of~{\modules{$R$}}.
     For every~$\alpha \in A$ let~$p_\alpha \colon \prod_{\beta \in A} N_\beta \to N_\alpha$ be the projection onto the~\dash{$\alpha$}{th} factor.
     
-    Then every choice of homomorphism~$f_\alpha \colon M \to N_\alpha$ with~$\alpha \in A$ can be uniquely combined into homomorphism~$f \colon M \to \prod_{\alpha \in A} N_\alpha$, in the sense that~$p_\alpha \circ f = f_\alpha$ for every~$\alpha \in A$.
+    Then every choice of homomorphism~$f_\alpha \colon M \to N_\alpha$ with~$\alpha \in A$ can be uniquely combined into a homomorphism~$f \colon M \to \prod_{\alpha \in A} N_\alpha$, in the sense that~$p_\alpha \circ f = f_\alpha$ for every~$\alpha \in A$.
     The homomorphism~$f$ is given on elements by
     \[
         f(m)
@@ -50,16 +50,15 @@ Recall the universal properties of the direct sum and the direct product:
     \longleftrightarrow
       \bigoplus_{\alpha \in A} \Hom_R(M, N_\alpha) \,.
   \]
-  This is however true if~$M$ is finitely generated.
+  But it does if~$M$ is finitely generated.
 \end{warning}
 
 We now have that
 \begin{align*}
-          R'
-   =      \End_\Integer(E)
-   =      \Hom_\Integer(E, E)
-  &=      \Hom_\Integer\left( \bigoplus_p \Integer/p , \bigoplus_q \Integer/q \right) \\
-  &\cong  \prod_p \Hom_\Integer \left( \Integer/p, \bigoplus_q \Integer/q \right)
+        R'
+  =     \Hom_\Integer(E, E)
+  =     \Hom_\Integer\left( \bigoplus_p \Integer/p , \bigoplus_q \Integer/q \right)
+  \cong \prod_p \Hom_\Integer \left( \Integer/p, \bigoplus_q \Integer/q \right)
 \end{align*}
 The inclusion~$i \colon \bigoplus_q \Integer/q \to \prod_q \Integer/q$ induces an inclusion of abelian groups
 \[
@@ -67,7 +66,9 @@ The inclusion~$i \colon \bigoplus_q \Integer/q \to \prod_q \Integer/q$ induces a
   \xlongto{i_*} \Hom_\Integer \left( \Integer/p, \prod_q \Integer/q \right)
   \cong         \prod_q \Hom_\Integer( \Integer/p, \Integer/q ) \,.
 \]
-It follows from Schur’s lemma that~$\Hom_\Integer(\Integer/p, \Integer/q) = 0$ if~$p \neq q$, and we have for~$p = q$ that
+It follows from Schur’s lemma that~$\Hom_\Integer(\Integer/p, \Integer/q) = 0$ if~$p \neq q$.
+(This can also be seen by looking at the~\dash{$p$}{torsion} (or~\dash{$q$}{torsion}) of both sides.)
+We have for~$p = q$ that
 \[
         \Hom_\Integer( \Integer/p, \Integer/p )
   =     \Hom_{\Integer/p}( \Integer/p, \Integer/p )
@@ -91,7 +92,7 @@ Every such homomorphism restricts to a homomorphism~$\Integer/p \to \bigoplus_q 
 We thus find that
 \[
         \Hom_\Integer \left( \Integer/p, \bigoplus_q \Integer/q \right)
-  \cong \Integer/q \,,
+  \cong \Integer/p \,,
 \]
 with the same description as above.
 

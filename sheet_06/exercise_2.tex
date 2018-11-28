@@ -17,10 +17,19 @@ The module~$S$ is cyclic:
 It holds that~$S \neq 0$ and for~$x \in S$ with~$x \neq 0$ the submodule~$\gen{x}$ is a nonzero submodule of~$S$.
 Hence~$S = \gen{x}$ because~$S$ is simple.
 This shows that~$S \cong R/M$ for some module~$M$.
-That~$S$ is simple is by the above argumentaiton equivalent to~$M$ being maximal.
+The simplicity of~$S$ is by the above argumentation equivalent to~$M$ being maximal.
 
 The maximal ideals in~$\Integer$ are~$p \Integer$ with~$p$ prime.
 The simple~{\modules{$\Integer$}} are therefore (up to isomorphism) precisely~$\Integer/p\Integer$ with~$p$ prime.
+
+\begin{remark}
+  We have seen above that a simple module~$S$ is not only cyclic, but that every nonzero element~$x \in S$ is already a cyclic generator.
+  This is an equivalent characterization of simple modules:
+  A module~$S$ is simple if and only if~$S \neq 0$ and every nonzero~$x \in S$ is a cyclic generator.
+  
+  Indeed, if~$S$ satisfies this condition(s), then~$S$ contains no proper nonzero cyclic submodule, and hence no proper nonzero submodule.
+  Since~$S \neq 0$, this means that~$S$ is simple.
+\end{remark}
 
 \begin{warning}
   Different maximal ideals~$M, M' \subseteq R$ may given isomorphic simple modules~$R/M \cong R/M'$.
@@ -45,7 +54,7 @@ In particular~$2 \Integer \subseteq \Integer$ has no direct complement.
 
 \subsection{}
 
-Every semisimple~\dash{$\Integer$}{module}~$M$ is by part~\ref{classification of simple modules} of the form
+Every semisimple~\dash{$\Integer$}{module}~$M$ is by part~\ref*{classification of simple modules} of the form
 \[
   M \cong \bigoplus_{i \in I} \Integer/p_i
 \]
@@ -55,8 +64,8 @@ The primes~$p_i$ are in particular \dash{square}{free}, which proves the stateme
 
 \begin{remark}
   One has for every~$n \geq 0$ that~$\Integer/n$ is semisimple if and only if~$n$ is \dash{square}{free}.
-  Indeed, if~$n = 0$ then~$\Integer/n = \Integer$ is not semisimple.
-  If~$n \geq 1$ then we may write~$n = p_1^{n_1} \dotsm p_r^{n_r}$ for some pairwise different primes~$p_i$ and exponents~$n_i \geq 0$.
+  Indeed, if~$n = 0$ then~$\Integer/n = \Integer$ is not semisimple, and if~$n = 1$ then~$\Integer/n = 0$ is semisimple.
+  For~$n \geq 2$ we have~$n = p_1^{n_1} \dotsm p_r^{n_r}$ for some pairwise different primes~$p_i$ and exponents~$n_i \geq 1$.
   Then
   \[
           \Integer/n
@@ -67,7 +76,7 @@ The primes~$p_i$ are in particular \dash{square}{free}, which proves the stateme
   Hence~$\Integer/n$ is semisimple if and only if every summand~$\Integer/p_i^{n_i}$ is already simple.
   We have seen above that this is the case if and only if every~$p_i^{n_i}$ is prime, i.e.\ if and only if~$n_i = 1$ for every~$i = 1, \dotsc, r$.
   
-  It follows that an~{\module{$\Integer$}}~$M$ is semisimple if and only if~$M \cong \bigoplus_i \Integer/n_i$ where the~$n_i$ are \dash{square}{free} integers.
+  It follows that a~{\module{$\Integer$}}~$M$ is semisimple if and only if~$M \cong \bigoplus_i \Integer/n_i$ where the~$n_i$ are \dash{square}{free} integers.
 \end{remark}
 
 
