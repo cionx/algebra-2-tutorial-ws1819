@@ -1,4 +1,109 @@
-\addtocounter{section}{1}
+\section{}
+
+
+\begin{recall}
+  A map~$f \colon X \to Y$ between topological spaces~$X$ and~$Y$ is continuous if and only if
+  \[
+    f( \closure{A} )
+    \subseteq
+    \closure{f(A)}
+  \]
+  for every subset~$A \subseteq X$.
+\end{recall}
+
+
+
+
+
+\subsection{}
+
+It holds that~$e \in U \subseteq \closure{U}$.
+The inversion map~$i \colon G \to G$ is continuous and therefore satisfies
+\[
+  i(\closure{U})
+  \subseteq
+  \closure{ i(U) }
+  =
+  \closure{U} \,.
+\]
+This shows that~$\closure{U}^{-1} \subseteq \closure{U}$.
+For every~$g \in U$ the left multiplication
+\[
+  \ell_g
+  \colon
+  G
+  \to
+  G \,,
+  \quad
+  h
+  \mapsto
+  gh
+\]
+is continuous and therefore satisfies
+\[
+  \ell_g( \closure{U} )
+  \subseteq
+  \closure{ \ell_g(U) }
+  =
+  \closure{U} \,.
+\]
+This shows that~$U \closure{U} \subseteq \closure{U}$.
+We now use that for every~$h \in \closure{U}$ the right multiplication
+\[
+  r_h
+  \colon
+  G
+  \to
+  G \,,
+  \quad
+  g
+  \mapsto
+  gh
+\]
+is continuous and hence satisfies
+\[
+  r_h( \closure{U} )
+  \subseteq
+  \closure{ r_h(U) }
+  \subseteq
+  \closure{U} \,.
+\]
+This shows that~$\closure{U} \closure{U} \subseteq \closure{U}$.
+We have altogether shown that~$\closure{U}$ is again a subgroup of~$G$.
+
+
+
+
+
+\subsection{}
+
+For every~$g \in U$ the commutator map
+\[
+  c_g
+  \colon
+  G
+  \to
+  G \,,
+  \quad
+  h
+  \mapsto
+  g h g^{-1} h
+\]
+in continous, and the singleton~$\{e\} \subseteq G$ is closed.
+Hence
+\[
+  c_g(\closure{U})
+  \subseteq
+  \closure{ c_g(U) }
+  =
+  \closure{ \{e\} }
+  =
+  \{e\}
+\]
+because~$U$ is abelian.
+This shows that every~$g \in U$ commutes with every~$h \in \closure{U}$.
+By repeating this argument we find that every~$h \in \closure{U}$ commutes with every~$g \in \closure{U}$.
+This shows that~$\closure{U}$ is abelian.
 
 
 
