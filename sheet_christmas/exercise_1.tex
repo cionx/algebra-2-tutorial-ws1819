@@ -1,5 +1,30 @@
-\addtocounter{section}{1}
+\section{}
 
-
+We observe first that instead of~$1 \leq i, j \leq n$ the condition~$1 \leq i < j \leq n$ is needed.
+We hence set
+\[
+  V
+  \defined
+  \prod_{1 \leq i < j \leq n} (X_i - X_j)
+\]
+and need to show that~$V \divides f$.
+We note that
+\[
+  k[X_1, \dotsc, X_n]/(X_1 - X_2)
+  \cong
+  k[Y_1, \dotsc, Y_{n-1}]
+\]
+by mapping both~$X_1$ and~$X_2$ to~$Y_1$, and then mapping~$X_1, \dotsc, \widehat{X_i}, \dotsc, \widehat{X_j}, \dotsc, X_n$ in strictly increasing order onto~$Y_2, \dotsc, Y_{n-1}$.
+We find that~$f$ is mapped to
+\[
+  f(Y_1, Y_1, Y_2, \dotsc, Y_{n-1})
+  =
+  -f(Y_1, Y_1, Y_2, \dotsc, Y_{n-1})  \,.
+\]
+It follows from~$\ringchar(k) \neq 2$ that~$f$ is mapped to~$0$, and hence that~$f \in (X_1 - X_2)$.
+This shows that~$(X_1 - X_2) \divides f$, and we find in the same way that~$X_i - X_j \divides f$ for all~$1 \leq i < j \leq n$.
+These elements are pairwise \dash{non}{equivalent} primes of~$k[X_1, \dotsc, X_n]$;
+that they are primes follows from~$k[X_1, \dotsc, X_n]/(X_i - X_j) \cong k[Y_1, \dotsc, Y_{n-1}]$ being an integral domain, and they are \dash{non}{equivalent} because they are monic and pairwise different.
+It follows, because~$k[X_1, \dotsc, X_n]$ is factorial, that~$V \divides f$.
 
 
