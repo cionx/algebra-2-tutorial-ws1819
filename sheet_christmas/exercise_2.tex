@@ -1,5 +1,28 @@
-\addtocounter{section}{1}
+\section{}
 
 
+\begin{lemma}
+  Let~$X$ be a topological space, let~$U \subseteq X$ be open and let~$D \subseteq X$ be dense.
+  Then~$D \cap U$ is dense in~$U$.
+\end{lemma}
 
+\begin{proof}
+  Let~$x \in X$ and let~$V \subseteq U$ be an open neighbourhood of~$x$ in~$U$.
+  Then~$V$ is also an open neighbourhood of~$x$ in~$X$, and hence contains an element~$d \in D$.
+  Then~$d \in D \cap X$ with~$d \in V$.
+\end{proof}
+
+We know from the lecture that~$\GL_n(k) \subseteq \mat{n}{k}$ is open, and that the set
+\[
+  D
+  \defined
+  \{
+    A \in \mat{n}{k}
+  \suchthat
+    \text{$A$ is diagonalizable}
+  \}
+\]
+is dense in~$\mat{n}{k}$.
+It follows that~$G^{\mathrm{ss}} = D \cap \GL_n(k)$ is dense in~$\GL_n(k)$.
+(Here we use that the subspace topology that~$\GL_n(k)$ inherits from~$\mat{n}{k}$ coincides with its Zariski topology.)
 
