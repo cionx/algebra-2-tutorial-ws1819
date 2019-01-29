@@ -10,10 +10,10 @@ It follows from the Artin--Wedderburn theorem that
 \[
   \Complex[Q]
   \cong
-  \mat{n_1}(\Complex) \times \dotsb \times \mat{n_r}(\Complex)
+  \mat{n_1}{\Complex} \times \dotsb \times \mat{n_r}{\Complex}
 \]
 where~$n_1, \dotsc, n_r$ are the dimensions of the irreducible complex representations of~$Q$.
-We have for the resulting composition
+We have for the resulting decomposition
 \[
   8
   =
@@ -36,7 +36,7 @@ three possibilities:
   1 + \dotsb + 1  \,.
 \]
 The group~$Q$ acts trivially on~$\Complex$, and this makes~$\Complex$ into an irreducible complex representation.
-This shows that~$n_i = 1$ for some~$i$, whence we can exclude the possiblity~$8 = 4 + 4$.
+This shows that~$n_i = 1$ for some~$i$, thus we can exclude the possiblity~$8 = 4 + 4$.
 In the case~$8 = 1 + \dotsb + 1$ we would find that the algebra
 \[
   \Complex[Q]
@@ -53,7 +53,15 @@ We are only left with the possiblity~$8 = 4 + 1 + 1 + 1 + 1$, which means that
 \[
   \Complex[Q]
   \cong
-  \mat{2}{\Complex} \times \Complex \times \Complex \times \Complex \times \Complex \,.
+  \Complex
+  \times
+  \Complex
+  \times
+  \Complex
+  \times
+  \Complex
+  \times
+  \mat{2}{\Complex} \,.
 \]
 
 
@@ -63,9 +71,18 @@ We are only left with the possiblity~$8 = 4 + 1 + 1 + 1 + 1$, which means that
   \[
     \Complex[D]
     \cong
-    \mat{2}{\Complex} \times \Complex \times \Complex \times \Complex \times \Complex \,.
+    \Complex
+    \times
+    \Complex
+    \times
+    \Complex
+    \times
+    \Complex
+    \times
+    \mat{2}{\Complex} \,.
   \]
-  We hence find that~$\Complex[Q] \cong \Complex[D]$ even though~$Q \ncong D$.
+  We hence find that~$\Complex[Q] \cong \Complex[D]$ even though~$Q \ncong D$.%
+  \footnote{This can be fixed by endowing the group algebra with the additional structure of an Hopf algebra.}
 \end{remark}
 
 
@@ -76,7 +93,7 @@ We are only left with the possiblity~$8 = 4 + 1 + 1 + 1 + 1$, which means that
 
 
 There exists a unique linear map~$f \colon \Real[Q] \to \Quaternion$ with~$f(q) = a_q$ for every~$q \in Q$.
-This linear map is multiplicative on the basis~$Q$ of~$\Real[Q]$ and hence is an algebra homomorphism.
+This linear map is multiplicative on the basis~$Q$ of~$\Real[Q]$ and is therefore an algebra homomorphism.
 The basis~$1$,~$i$,~$j$,~$k$ of~$\Quaternion$ is contained in the image of~$f$, which shows that~$f$ is surjective.
 
 
@@ -86,15 +103,15 @@ The basis~$1$,~$i$,~$j$,~$k$ of~$\Quaternion$ is contained in the image of~$f$, 
 \subsection{}
 
 The center of~$Q$ is given by~$\gcenter(Q) = \{1, -1\}$.
-Any two elements of~$Q$ commute up to sign, whence the quotient group~$Q/\gcenter(Q)$ is abelian.
+Any two elements of~$Q$ commute up to sign, so the quotient group~$Q/\gcenter(Q)$ is abelian.
 The group~$Q/\gcenter(Q)$ has order~$4$ and every nontrivial element has order~$2$.
 It follows that
 \[
   Q/\gcenter(Q)
   \cong
-  \Integer/2 \times \Integer/2  \,;
+  \Integer/2 \times \Integer/2  \,.
 \]
-one such isomorphism is given by
+One such isomorphism is given by
 \[
   \pm 1 \mapsto (0,0) \,, \quad
   \pm i \mapsto (0,1) \,, \quad
@@ -125,7 +142,7 @@ There exist four group homomorphisms~$\Integer/2 \times \Integer/2 \to \Real^2$,
   \quad
 \]
 We hence get four different group homomorphisms~$Q \to \Real^\times$.
-These homomorphisms given four nonisomorphic \dash{one}{dimensional} representations of~$Q$ over~$\Real$.
+These homomorphisms give four nonisomorphic \dash{one}{dimensional} real representations of~$Q$.
 
 
 
@@ -143,10 +160,10 @@ It follows from the Artin--Wedderburn theorem that
 \end{equation}
 where~$D_1^\op, \dotsc, D_n^\op$ are the the endomorphism ring of the irreducible real representations of~$Q$.
 We have previously found four nonisomorphic \dash{one}{dimensional} real representations of~$Q$;
-their endomorphism rings are given by~$\Real$ (as they are \dash{one}{dimensional}).
+their endomorphism rings are given by~$\Real$ (because these representations are \dash{one}{dimensional}).
 
-The quaternions~$\Quaternion$ become a~\module{$\Real[Q]$}, i.e.\ representation of~$Q$, via the algebra homomorphism~$\Real[Q] \to \Quaternion$.
-The quaternions~$\Quaternion$ are simple as an~\module{$\Quaternion$} because~$\Quaternion$ is a skew field, and hence simple as an~\module{$\Real[Q]$} becuase the homomorphism~$\Real[Q] \to \Quaternion$ is surjective.
+The quaternions~$\Quaternion$ become an~\module{$\Real[Q]$}, i.e.\ a representation of~$Q$, via the constructed algebra homomorphism~$\Real[Q] \to \Quaternion$.
+The quaternions~$\Quaternion$ are simple as an~\module{$\Quaternion$} because~$\Quaternion$ is a skew field, and hence simple as an~\module{$\Real[Q]$} because the homomorphism~$\Real[Q] \to \Quaternion$ is surjective.
 Thus~$\Quaternion$ is another irreducible real representation of~$Q$;
 it is nonisomorphic to the previous four irreducible representations for dimension reasons.
 We find with the surjectivity of the homomorphism~$\Real[Q] \to \Quaternion$ that
@@ -163,8 +180,9 @@ We find with the surjectivity of the homomorphism~$\Real[Q] \to \Quaternion$ tha
 \]
 where the last isomorphism is given by~$x \mapsto \conjugate{x}$.
 
-We have found for the decomposition~\eqref{RQ decomposition} four times the factor~$\Real$ and one time the factor~$\Quaternion$.
-For dimension reasons there can’t be any more factors, and thus
+We have found for the decomposition~\eqref{RQ decomposition} that, up to reordering,~$D_1 = \dotsb = D_4 = \Real$ and~$D_5 = \Quaternion$.
+For dimension reasons there can’t be any more factors and~$n_i = 1$ for all~$i$.
+Therefore
 \[
   \Real[Q]
   \cong
@@ -189,8 +207,7 @@ For dimension reasons there can’t be any more factors, and thus
   The endomorphisms of this action are those~\dash{$\Real$}{linear} maps~$f \colon \Complex \to \Complex$ that are compatible with rotation by~$90^\circ$, i.e.\ multiplication with~$i$, and reflection at the real axis, i.e.\ complex conjugation.
   The first conditions ensures that~$f$ is already~\dash{$\Complex$}{linear}, and hence given by multiplication with some complex number~$z \in \Complex$.
   The second conditions tells us that already~$z \in \Real$.
-  We therefore find that
-  We also know from the Artin--Wedderburn theorem for the corresponding irreducible representations~$V_1, \dotsc, V_5$ that
+  This shows that
   \[
     \End_{D}(\Complex)
     =
@@ -203,13 +220,14 @@ For dimension reasons there can’t be any more factors, and thus
     \cong
     \mat{n_1}{D_1} \times \dotsb \times \mat{n_r}{D_r}
   \]
-  we have now find that, up to reordering,~$D_1 = \dotsb = D_5 = \Real$.
-  We also know from the Artin--Wedderburn theorem for the corresponding irreducible representations~$V_1, \dotsc, V_5$ that
+  we now find that, up to reordering,~$D_1 = \dotsb = D_5 = \Real$.
+  We also know  that
   \[
     n_i \dim D_i
     =
-    \dim V_i  \,.
+    \dim V_i
   \]
+  because~$D_i^{n_i}$ is the (up to isomorphism unique) simple module of~$\mat{n_i}{D_i}$.
   We hence find that~$n_1 = n_2 = n_3 = n_4 = 1$ and~$n_5 = 2$.
   We find by dimension reasons that there can be no other factors, and hence that
   \[
