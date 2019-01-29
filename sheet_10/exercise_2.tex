@@ -18,7 +18,7 @@
 \subsection{}
 
 It holds that~$e \in U \subseteq \closure{U}$.
-The inversion map~$i \colon G \to G$ is continuous and therefore satisfies
+The inversion map~$i \colon G \to G$ is a morphism and hence continuous, and therefore satisfies
 \[
   i(\closure{U})
   \subseteq
@@ -39,7 +39,7 @@ For every~$g \in U$ the left multiplication
   \mapsto
   gh
 \]
-is continuous and therefore satisfies
+is a morphism and hence continuous, and therefore satisfies
 \[
   \ell_g( \closure{U} )
   \subseteq
@@ -60,15 +60,17 @@ We now use that for every~$h \in \closure{U}$ the right multiplication
   \mapsto
   gh
 \]
-is continuous and hence satisfies
+is a morphism and hence continuous with~$r_g(U) \subseteq \closure{U}$, and therefore satisfies
 \[
   r_h( \closure{U} )
   \subseteq
   \closure{ r_h(U) }
   \subseteq
+  \closure{\closure{U}} 
+  =
   \closure{U} \,.
 \]
-This shows that~$\closure{U} \closure{U} \subseteq \closure{U}$.
+This shows that~$\closure{U} \, \closure{U} \subseteq \closure{U}$.
 We have altogether shown that~$\closure{U}$ is again a subgroup of~$G$.
 
 
@@ -87,10 +89,10 @@ For every~$g \in U$ the commutator map
   \quad
   h
   \mapsto
-  g h g^{-1} h
+  g h g^{-1} h^{-1}
 \]
-in continous, and the singleton~$\{e\} \subseteq G$ is closed.
-Hence
+in a morphisms and hence continuous, and the singleton~$\{e\} \subseteq G$ is closed.
+Therefore
 \[
   c_g(\closure{U})
   \subseteq
@@ -98,12 +100,12 @@ Hence
   =
   \closure{ \{e\} }
   =
-  \{e\}
+  \{e\} \,,
 \]
-because~$U$ is abelian.
+where we use that~$c_g(U) = \{e\}$ since~$U$ is abelian.
 This shows that every~$g \in U$ commutes with every~$h \in \closure{U}$.
 By repeating this argument we find that every~$h \in \closure{U}$ commutes with every~$g \in \closure{U}$.
-This shows that~$\closure{U}$ is abelian.
+This then shows that~$\closure{U}$ is abelian.
 
 
 
